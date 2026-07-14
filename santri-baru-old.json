@@ -1,0 +1,338 @@
+﻿[
+    {
+        "C2":  "",
+        "C4":  "",
+        "Jenjang":  "MTs",
+        "Row":  1,
+        "C1":  "DATA NOMOR INDUK SANTRI (NIS) BARU - TAHUN 2026",
+        "C3":  ""
+    },
+    {
+        "C2":  "",
+        "C4":  "",
+        "Jenjang":  "MTs",
+        "Row":  2,
+        "C1":  "Pondok Pesantren Al Andalus Al Imam",
+        "C3":  ""
+    },
+    {
+        "C2":  "Nama Santri",
+        "C4":  "NIS",
+        "Jenjang":  "MTs",
+        "Row":  4,
+        "C1":  "No",
+        "C3":  "Jenjang"
+    },
+    {
+        "C2":  "Abdul Aziz Ali",
+        "C4":  "2601070001",
+        "Jenjang":  "MTs",
+        "Row":  5,
+        "C1":  "1",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Abdul Hakim",
+        "C4":  "2601070002",
+        "Jenjang":  "MTs",
+        "Row":  6,
+        "C1":  "2",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Ahmad Farros Al Barqy",
+        "C4":  "2601070003",
+        "Jenjang":  "MTs",
+        "Row":  7,
+        "C1":  "3",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Andi Ibra Faeyza Hasan Alnasr",
+        "C4":  "2601070016",
+        "Jenjang":  "MTs",
+        "Row":  8,
+        "C1":  "4",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Atqanul Ummah Ahmad",
+        "C4":  "2601070004",
+        "Jenjang":  "MTs",
+        "Row":  9,
+        "C1":  "5",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Azka Panji Kusuma",
+        "C4":  "2601070005",
+        "Jenjang":  "MTs",
+        "Row":  10,
+        "C1":  "6",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Fariq Malaibui",
+        "C4":  "2601070006",
+        "Jenjang":  "MTs",
+        "Row":  11,
+        "C1":  "7",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Haidar Ayyubi",
+        "C4":  "2601070007",
+        "Jenjang":  "MTs",
+        "Row":  12,
+        "C1":  "8",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Khalish",
+        "C4":  "2601070017",
+        "Jenjang":  "MTs",
+        "Row":  13,
+        "C1":  "9",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Labibullah El Fatih",
+        "C4":  "2601070008",
+        "Jenjang":  "MTs",
+        "Row":  14,
+        "C1":  "10",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "M Fazril Alkais",
+        "C4":  "2601070009",
+        "Jenjang":  "MTs",
+        "Row":  15,
+        "C1":  "11",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Muh Asrorin Da Silva",
+        "C4":  "2601070010",
+        "Jenjang":  "MTs",
+        "Row":  16,
+        "C1":  "12",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Muhammad Azzam Al Hafiz",
+        "C4":  "2601070011",
+        "Jenjang":  "MTs",
+        "Row":  17,
+        "C1":  "13",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Muhammad Hafidz Reo Afelano",
+        "C4":  "2601070012",
+        "Jenjang":  "MTs",
+        "Row":  18,
+        "C1":  "14",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Muhammad Rifqi Hamid",
+        "C4":  "2601070013",
+        "Jenjang":  "MTs",
+        "Row":  19,
+        "C1":  "15",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Muhammad Yahya Ayyash",
+        "C4":  "2601070014",
+        "Jenjang":  "MTs",
+        "Row":  20,
+        "C1":  "16",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "Naufal Dzakiy Purnama",
+        "C4":  "2601070015",
+        "Jenjang":  "MTs",
+        "Row":  21,
+        "C1":  "17",
+        "C3":  "MTs"
+    },
+    {
+        "C2":  "",
+        "C4":  "",
+        "Jenjang":  "IL",
+        "Row":  1,
+        "C1":  "DATA NOMOR INDUK SANTRI (NIS) BARU - TAHUN 2026",
+        "C3":  ""
+    },
+    {
+        "C2":  "",
+        "C4":  "",
+        "Jenjang":  "IL",
+        "Row":  2,
+        "C1":  "Pondok Pesantren Al Andalus Al Imam",
+        "C3":  ""
+    },
+    {
+        "C2":  "Nama Santri",
+        "C4":  "NIS",
+        "Jenjang":  "IL",
+        "Row":  4,
+        "C1":  "No",
+        "C3":  "Jenjang"
+    },
+    {
+        "C2":  "Abdullah Rasyid",
+        "C4":  "2602070015",
+        "Jenjang":  "IL",
+        "Row":  5,
+        "C1":  "1",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Abdurrahim Pati Raja",
+        "C4":  "2602070001",
+        "Jenjang":  "IL",
+        "Row":  6,
+        "C1":  "2",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Daffa Muammar Dzaki",
+        "C4":  "2602070002",
+        "Jenjang":  "IL",
+        "Row":  7,
+        "C1":  "3",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Fanni Hariri Hamonangan",
+        "C4":  "2602070003",
+        "Jenjang":  "IL",
+        "Row":  8,
+        "C1":  "4",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Farid",
+        "C4":  "2602070004",
+        "Jenjang":  "IL",
+        "Row":  9,
+        "C1":  "5",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Favian Radi",
+        "C4":  "2602070005",
+        "Jenjang":  "IL",
+        "Row":  10,
+        "C1":  "6",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Fiqri Ramdan Handoko",
+        "C4":  "2602070016",
+        "Jenjang":  "IL",
+        "Row":  11,
+        "C1":  "7",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Hibban Hibaturrahman",
+        "C4":  "2602070006",
+        "Jenjang":  "IL",
+        "Row":  12,
+        "C1":  "8",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Ken Alfarezha Haryadi",
+        "C4":  "2602070007",
+        "Jenjang":  "IL",
+        "Row":  13,
+        "C1":  "9",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Khubaib Abdul Aziz",
+        "C4":  "2602070008",
+        "Jenjang":  "IL",
+        "Row":  14,
+        "C1":  "10",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Lalu Muhamad Rizky Ananda",
+        "C4":  "2602070009",
+        "Jenjang":  "IL",
+        "Row":  15,
+        "C1":  "11",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Miizan Alghifary Dizlilar",
+        "C4":  "2602070010",
+        "Jenjang":  "IL",
+        "Row":  16,
+        "C1":  "12",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Muhammad Rasyid Ridho",
+        "C4":  "2602070011",
+        "Jenjang":  "IL",
+        "Row":  17,
+        "C1":  "13",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Muhammad Rizky",
+        "C4":  "2602070012",
+        "Jenjang":  "IL",
+        "Row":  18,
+        "C1":  "14",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Nurcahya Eka Putra",
+        "C4":  "2602070017",
+        "Jenjang":  "IL",
+        "Row":  19,
+        "C1":  "15",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Panji Ahmad",
+        "C4":  "2602070018",
+        "Jenjang":  "IL",
+        "Row":  20,
+        "C1":  "16",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Raylan Akbar",
+        "C4":  "2602070013",
+        "Jenjang":  "IL",
+        "Row":  21,
+        "C1":  "17",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Wahyu Hidayat",
+        "C4":  "2602070019",
+        "Jenjang":  "IL",
+        "Row":  22,
+        "C1":  "18",
+        "C3":  "IL"
+    },
+    {
+        "C2":  "Zakaria Reynaldo",
+        "C4":  "2602070014",
+        "Jenjang":  "IL",
+        "Row":  23,
+        "C1":  "19",
+        "C3":  "IL"
+    }
+]

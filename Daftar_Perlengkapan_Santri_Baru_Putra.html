@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Perlengkapan Santri Baru (Putra)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background-color: #e2e8f0;
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Modern Table Design */
+        table {
+            width: 100%;
+            min-width: 600px; 
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: #550000 !important; /* Maroon Al-Imam */
+            color: #ffffff !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        th:first-child { border-top-left-radius: 8px; }
+        th:last-child { border-top-right-radius: 8px; }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Category Rows */
+        .category-row td {
+            background-color: #fcf9f2 !important; /* Krem Emas super light */
+            color: #550000 !important; /* Maroon Al-Imam */
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-bottom: 2px solid #ddc192 !important; /* Krem Emas */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .category-row td:first-child {
+            border-left: 4px solid #550000 !important; /* Maroon Al-Imam */
+        }
+
+        /* Note Box Premium */
+        .note-box {
+            background: linear-gradient(to right, #fcf9f2, #ffffff) !important;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #ddc192 !important; /* Krem Emas */
+        }
+
+        .note-box h3 {
+            color: #550000 !important;
+        }
+
+        .note-box ul li::before {
+            content: '•';
+            color: #ddc192 !important;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .badge-optional {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background-color: #fcf9f2 !important;
+            color: #550000 !important;
+            border: 1px solid #ddc192;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        /* Essential Print Rules */
+        @media print {
+            html, body {
+                background-color: #ffffff !important;
+            }
+            .print-exact {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .main-container {
+                padding: 10mm 15mm !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+
+            .table-wrapper {
+                overflow-x: visible !important;
+            }
+            table {
+                min-width: 100% !important;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+            
+            th:first-child, th:last-child {
+                border-radius: 0 !important;
+            }
+
+            tbody {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="p-2 md:p-6 print-exact">
+
+    <!-- Tombol Print -->
+    <div class="fixed bottom-6 right-6 md:top-6 md:bottom-auto flex gap-3 z-50 no-print">
+        <button onclick="window.print()" class="bg-[#550000] hover:bg-[#330000] text-white font-medium py-3 px-6 md:py-2.5 md:px-5 rounded-full md:rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 border border-[#ddc192]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span class="hidden md:inline">Cetak PDF Berkualitas</span>
+            <span class="inline md:hidden">Cetak</span>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container bg-white mx-auto max-w-[210mm] w-full p-5 md:p-10 shadow-2xl rounded-2xl">
+        
+        <!-- Document Header -->
+        <div class="flex flex-col-reverse md:flex-row md:items-center justify-between mb-8 pb-6 border-b-2 border-[#ddc192]/40 gap-4">
+            <div>
+                <p class="text-[#550000] font-semibold tracking-wider text-xs md:text-sm uppercase mb-1 heading-font">Dokumen Resmi Pesantren</p>
+                <h1 class="text-2xl md:text-3xl font-bold text-slate-800 heading-font leading-tight">Daftar Perlengkapan Santri Baru</h1>
+                <h2 class="text-lg md:text-xl font-medium text-slate-500 mt-1 heading-font">Kategori: <span class="text-[#550000] font-bold">PUTRA</span></h2>
+            </div>
+            <div class="w-14 h-14 md:w-16 md:h-16 bg-[#fcf9f2] rounded-xl border border-[#ddc192] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 md:h-8 md:w-8 text-[#550000]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="note-box p-5 mb-8 rounded-lg relative">
+            <h3 class="font-bold mb-3 flex items-center gap-2 text-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#ddc192]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Catatan Penting untuk Wali Santri
+            </h3>
+            <ul class="pl-6 space-y-2 text-sm md:text-base text-slate-700">
+                <li>Perlengkapan yang tertera di bawah ini adalah perlengkapan yang <strong>diwajibkan atau direkomendasikan</strong>.</li>
+                <li>Jumlah yang dicantumkan merupakan <strong>jumlah minimal</strong>. Seluruh barang mohon <strong>dipersiapkan secara mandiri</strong>.</li>
+                <li>Mohon <strong>berikan nama/tanda pengenal</strong> (bordir/spidol permanen) pada setiap barang pribadi.</li>
+                <li>Diharapkan tidak membekali santri dengan barang-barang mewah (harga di atas Rp 500.000).</li>
+                <li>Semua perlengkapan (pakaian, handuk, dll) <strong>dilarang keras mengandung gambar makhluk hidup</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Single Table for entire list -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="w-10 text-center">No</th>
+                        <th class="w-1/3">Nama Perlengkapan</th>
+                        <th class="w-24 text-center">Jumlah</th>
+                        <th>Spesifikasi & Keterangan</th>
+                    </tr>
+                </thead>
+                
+                <!-- KATEGORI A -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">A</td>
+                        <td colspan="3" class="heading-font">Pakaian Sehari-Hari</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Kaos</td>
+                        <td class="text-center font-medium">7 pcs</td>
+                        <td class="text-slate-600">Termasuk 1 buah kaos olahraga. Diutamakan kaos polos.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Celana ¾</td>
+                        <td class="text-center font-medium">5 pcs</td>
+                        <td class="text-slate-600">Panjang menutupi lutut hingga pertengahan betis.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Baju / Kemeja</td>
+                        <td class="text-center font-medium">3 pcs</td>
+                        <td class="text-slate-600">Lengan panjang atau pendek (rapi).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Celana Panjang</td>
+                        <td class="text-center font-medium">3 pcs</td>
+                        <td class="text-slate-600">Kain bahan (formal). Tidak isbal dan tidak ketat.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Sandal Jepit</td>
+                        <td class="text-center font-medium">1 pasang</td>
+                        <td class="text-slate-600">Digunakan untuk aktivitas harian di asrama.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Jaket</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600">Tanpa gambar makhluk hidup.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">7</td>
+                        <td class="font-semibold text-slate-700">Kaos Kaki</td>
+                        <td class="text-center font-medium">-</td>
+                        <td class="text-slate-600">Panjang kaos kaki minimal sampai atas betis.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">8</td>
+                        <td class="font-semibold text-slate-700">Pakaian Dalam</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI B -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">B</td>
+                        <td colspan="3" class="heading-font">Pakaian Shalat</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Gamis</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600"><strong>Wajib</strong> berwarna putih bersih.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Baju Takwa / Koko</td>
+                        <td class="text-center font-medium">3 pcs</td>
+                        <td class="text-slate-600">Minimal 2 di antaranya wajib berwarna putih.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Sarung</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Peci</td>
+                        <td class="text-center font-medium">3 pcs</td>
+                        <td class="text-slate-600">Minimal 1 di antaranya berwarna putih.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Minyak Wangi</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">Non-alkohol (sunnah).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Sajadah</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Ketebalan standar, mudah dilipat.</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI C -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">C</td>
+                        <td colspan="3" class="heading-font">Penyimpanan Barang</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Kontainer Box</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Tinggi antara 25-40 cm (kapasitas maks 60 liter).</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI D -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">D</td>
+                        <td colspan="3" class="heading-font">Perlengkapan Sekolah / Belajar</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Sepatu Sekolah</td>
+                        <td class="text-center font-medium">1 pasang</td>
+                        <td class="text-slate-600">Wajib berwarna hitam.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Kaos Kaki Sekolah</td>
+                        <td class="text-center font-medium">3 pasang</td>
+                        <td class="text-slate-600">Warna hitam.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Tas Sekolah</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Songkok</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600">Warna hitam nasional.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Ikat Pinggang</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Warna hitam polos.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Mushaf Al-Qur'an</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600">Ukuran A5 (20x14 cm). <strong>Diutamakan Mushaf Rasm Utsmani Madinah.</strong> (Keduanya merk/ukuran sama).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">7</td>
+                        <td class="font-semibold text-slate-700">Buku Tulis</td>
+                        <td class="text-center font-medium">1 pack</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">8</td>
+                        <td class="font-semibold text-slate-700">Alat Tulis</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">Pulpen, pensil, penghapus, dll.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">9</td>
+                        <td class="font-semibold text-slate-700">Penggaris</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">10</td>
+                        <td class="font-semibold text-slate-700">Stabilo</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">11</td>
+                        <td class="font-semibold text-slate-700">Kamus Bahasa Arab</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Kamus Bahasa Arab Mahmud Yunus.</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI E -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">E</td>
+                        <td colspan="3" class="heading-font">Perlengkapan Makan</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Piring</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Diutamakan berbahan melamin / aluminium.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Gelas</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Diutamakan berbahan melamin / aluminium.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Botol Minum</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Mudah dijinjing atau dibawa ke kelas.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Sendok & Garpu</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Termos Air Kecil</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Untuk air hangat (opsional).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Sabun Cuci Piring</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">Serta spons cucinya.</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI F -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">F</td>
+                        <td colspan="3" class="heading-font">Perlengkapan Mandi</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Sabun Mandi</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">Diutamakan sabun cair (botol ±500 ml) + refill.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Sikat & Pasta Gigi</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Sampo</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Peralatan Mandi (Keranjang)</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Tempat untuk membawa perlengkapan mandi.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Handuk</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Warna abu-abu polos.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Ember</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Digunakan untuk merendam/menyimpan pakaian kotor.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">7</td>
+                        <td class="font-semibold text-slate-700">Pewangi Ruangan Gantung</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Untuk di lemari pakaian.</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI G -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">G</td>
+                        <td colspan="3" class="heading-font">Perlengkapan Tidur</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Guling & Bantal</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Bantal dan guling standar.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Sarung Guling</td>
+                        <td class="text-center font-medium">2 pcs</td>
+                        <td class="text-slate-600">Warna Hijau Stabilo Polos & Biru Navy Polos.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Sprei</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Ukuran kasur 200x80x15 cm (Biru Navy Polos).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Selimut</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Warna polos (tidak bermotif).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Sapu Lidi Kasur</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Sunnah untuk mengibas kasur sebelum tidur.</td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI H -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">H</td>
+                        <td colspan="3" class="heading-font">Obat-Obatan Ringan & Pribadi</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Obat Batuk / Pilek</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600"><span class="badge-optional">Opsional</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Obat Keseleo / Otot</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600"><span class="badge-optional">Opsional</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Multivitamin / Madu</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">Habbatus sauda, madu, dll.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Minyak Kayu Putih</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600"><span class="badge-optional">Opsional</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Obat Kumur Antiseptik</td>
+                        <td class="text-center font-medium">1 botol</td>
+                        <td class="text-slate-600"><span class="badge-optional">Opsional</span></td>
+                    </tr>
+                </tbody>
+
+                <!-- KATEGORI I -->
+                <tbody>
+                    <tr class="category-row">
+                        <td class="text-center heading-font">I</td>
+                        <td colspan="3" class="heading-font">Lain-Lain</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">1</td>
+                        <td class="font-semibold text-slate-700">Payung</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Model lipat agar mudah disimpan.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">2</td>
+                        <td class="font-semibold text-slate-700">Senter</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Jenis baterai (bukan senter listrik).</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">3</td>
+                        <td class="font-semibold text-slate-700">Gunting Kuku</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">4</td>
+                        <td class="font-semibold text-slate-700">Detergen Baju</td>
+                        <td class="text-center font-medium text-[10px] md:text-xs uppercase tracking-wide text-slate-500">Secukupnya</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">5</td>
+                        <td class="font-semibold text-slate-700">Sikat Baju</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">6</td>
+                        <td class="font-semibold text-slate-700">Gantungan Baju (Hanger)</td>
+                        <td class="text-center font-medium">1 pack</td>
+                        <td class="text-slate-600">-</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-slate-400 font-medium">7</td>
+                        <td class="font-semibold text-slate-700">Keran Air</td>
+                        <td class="text-center font-medium">1 pcs</td>
+                        <td class="text-slate-600">Keran plastik cadangan.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Halaman Terakhir: Barang Dilarang -->
+        <div class="mt-12" style="page-break-before: always; break-before: page;">
+            
+            <div class="text-center mb-10 pb-4 border-b-2 border-[#ddc192]">
+                <div class="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-[#fcf9f2] rounded-full mb-4 border border-[#ddc192]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 text-[#550000]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-[#550000] heading-font">Daftar Barang yang Dilarang</h2>
+                <p class="text-[#550000] mt-2 text-base md:text-lg">Santri <strong>dilarang keras</strong> membawa atau menggunakan barang-barang berikut:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div class="bg-gradient-to-br from-[#fcf9f2] to-white p-5 md:p-6 border border-[#ddc192]/50 rounded-xl shadow-sm" style="page-break-inside: avoid; break-inside: avoid;">
+                    <h3 class="text-[#550000] font-bold mb-4 flex items-center gap-2 border-b border-[#ddc192]/50 pb-2">
+                        <span class="w-6 h-6 rounded-full bg-[#ddc192] flex items-center justify-center text-[#550000] text-xs">1</span>
+                        Hukum & Norma
+                    </h3>
+                    <ul class="list-none space-y-3 md:space-y-4 text-slate-700 text-sm">
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis barang yang dimakruhkan ataupun diharamkan oleh syari'at agama.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis barang yang dilarang dalam hukum dan perundang-undangan Negara.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis barang yang dilarang oleh Kementrian Pendidikan dalam lingkup sekolah.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis senjata tajam atau senjata api.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis perangkat elektronik (HP, Laptop) / alat komunikasi.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis minuman / makanan memabukkan / haram.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis narkotika / zat adiktif / obat-obatan terlarang.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis rokok beserta bungkusnya.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-[#fcf9f2] to-white p-5 md:p-6 border border-[#ddc192]/50 rounded-xl shadow-sm" style="page-break-inside: avoid; break-inside: avoid;">
+                    <h3 class="text-[#550000] font-bold mb-4 flex items-center gap-2 border-b border-[#ddc192]/50 pb-2">
+                        <span class="w-6 h-6 rounded-full bg-[#ddc192] flex items-center justify-center text-[#550000] text-xs">2</span>
+                        Budaya & Hiburan
+                    </h3>
+                    <ul class="list-none space-y-3 md:space-y-4 text-slate-700 text-sm">
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis bacaan / novel / komik fiksi.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis majalah (selain majalah berkonten Islami).
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis bacaan / gambar yang mengandung unsur pornografi.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis barang yang mengarah pada idolisme (artis Hollywood, Korea, dll).
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis alat musik.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis penutup kepala (terpisah) selain songkok / peci (contoh: kupluk, topi gaul).
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="h-5 w-5 text-[#550000] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            Segala jenis perhiasan / asesoris badan selain jam tangan.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+</body>
+</html>
