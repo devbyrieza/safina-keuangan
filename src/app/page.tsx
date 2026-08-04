@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { Building2, Lock, User, Eye, EyeOff, ShieldCheck, Wallet, MonitorSmartphone, Crown, Store, Users, Key, ArrowRight } from "lucide-react";
 
 const DEMO_ACCOUNTS = [
-  { role: "Admin Keuangan", username: "admin", password: "admin123", href: "/admin-keuangan", color: "from-gold-500 to-amber-600", icon: <Crown className="w-6 h-6" /> },
-  { role: "Kasir Kantin", username: "kasir", password: "kasir123", href: "/kasir", color: "from-blue-500 to-blue-700", icon: <Store className="w-6 h-6" /> },
-  { role: "Wali Santri", username: "wali", password: "wali123", href: "/wali-santri", color: "from-maroon-600 to-maroon-800", icon: <Users className="w-6 h-6" /> },
+  { role: "Admin Keuangan", username: "admin", password: "admin123", href: "/admin-keuangan", color: "from-[#550000] to-[#751414]", icon: <Crown className="w-6 h-6 text-[#ddc192]" /> },
+  { role: "Kasir Kantin", username: "kasir", password: "kasir123", href: "/kasir", color: "from-[#380000] to-[#550000]", icon: <Store className="w-6 h-6 text-[#ddc192]" /> },
+  { role: "Wali Santri", username: "wali", password: "wali123", href: "/wali-santri", color: "from-[#b89758] to-[#8c6d32]", icon: <Users className="w-6 h-6 text-white" /> },
 ];
 
 export default function LoginPage() {
@@ -63,17 +63,17 @@ export default function LoginPage() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-gold-400/20 rounded-full blur-[100px]" />
         <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-maroon-600/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#550000]/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-5xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white border border-slate-100 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] mb-6">
-            <Building2 className="w-10 h-10 text-maroon-700" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-white border border-[#ebdcc3] rounded-3xl shadow-[0_20px_50px_rgba(85,0,0,0.08)] mb-6">
+            <Building2 className="w-10 h-10 text-[#550000]" />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-2">
-            SAFINA <span className="text-gold-500">KEUANGAN</span>
+            SAFINA <span className="text-[#b89758]">KEUANGAN</span>
           </h1>
           <p className="text-slate-500 mt-2 text-lg font-medium">Sistem Administrasi Finansial Pesantren Al-Imam Al-Islami</p>
         </div>
@@ -81,10 +81,10 @@ export default function LoginPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Login Form */}
           <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#ddc192]/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             
             <h2 className="text-slate-800 font-black text-2xl mb-8 flex items-center gap-3">
-              <Lock className="w-6 h-6 text-gold-500" /> Masuk ke Sistem
+              <Lock className="w-6 h-6 text-[#b89758]" /> Masuk ke Sistem
             </h2>
             <form onSubmit={handleLogin} className="space-y-6 relative z-10">
               <div>
@@ -96,7 +96,7 @@ export default function LoginPage() {
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     placeholder="Masukkan username..."
-                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl py-4 pl-12 pr-4 text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10 transition-all text-base"
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl py-4 pl-12 pr-4 text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#550000] focus:ring-4 focus:ring-[#550000]/10 transition-all text-base"
                   />
                 </div>
               </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Masukkan password..."
-                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl py-4 pl-12 pr-12 text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10 transition-all text-base"
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl py-4 pl-12 pr-12 text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#550000] focus:ring-4 focus:ring-[#550000]/10 transition-all text-base"
                   />
                   <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors">
                     {showPass ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -125,12 +125,12 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-white font-black py-4 rounded-2xl transition-all shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.6)] disabled:opacity-50 flex items-center justify-center gap-3 text-lg"
+                className="w-full bg-gradient-to-r from-[#550000] to-[#751414] hover:from-[#440000] hover:to-[#601010] text-white font-black py-4 rounded-2xl transition-all shadow-[0_10px_30px_rgba(85,0,0,0.35)] hover:shadow-[0_10px_40px_rgba(85,0,0,0.5)] disabled:opacity-50 flex items-center justify-center gap-3 text-lg"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-4 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                  <ShieldCheck className="w-5 h-5" />
+                  <ShieldCheck className="w-5 h-5 text-[#ddc192]" />
                 )}
                 {loading ? "Memverifikasi..." : "Masuk"}
               </button>
@@ -158,7 +158,7 @@ export default function LoginPage() {
           <div className="space-y-6">
             <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] p-8 md:p-10">
               <h2 className="text-slate-800 font-black text-xl mb-6 flex items-center gap-3">
-                <MonitorSmartphone className="w-6 h-6 text-blue-500" /> Akses Cepat Demo
+                <MonitorSmartphone className="w-6 h-6 text-[#b89758]" /> Akses Cepat Demo
               </h2>
               <div className="space-y-4">
                 {DEMO_ACCOUNTS.map(acc => (
@@ -192,7 +192,7 @@ export default function LoginPage() {
                 </div>
               </div>
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center border border-blue-100 group-hover:scale-110 transition-transform shrink-0"><Wallet className="w-6 h-6 text-blue-600" /></div>
+                <div className="w-12 h-12 bg-maroon-50 rounded-2xl flex items-center justify-center border border-maroon-100 group-hover:scale-110 transition-transform shrink-0"><Wallet className="w-6 h-6 text-[#550000]" /></div>
                 <div>
                   <p className="text-slate-800 text-sm font-black leading-tight">Uang Mengendap di Rekening Yayasan</p>
                   <p className="text-slate-500 text-xs font-medium mt-1">Settlement otomatis ke BSI Yayasan setiap hari</p>

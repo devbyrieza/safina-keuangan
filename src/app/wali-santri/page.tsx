@@ -375,8 +375,8 @@ export default function WaliSantriPage() {
                       Rp {tagihan.nominal.toLocaleString('id-ID')}
                     </p>
                     {tagihan.status === 'pending' && (
-                      <button onClick={() => openSnapForTagihan(tagihan)} className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 shadow-md shadow-blue-500/20 whitespace-nowrap">
-                        <ShieldCheck className="w-4 h-4" /> Bayar Instan
+                      <button onClick={() => openSnapForTagihan(tagihan)} className="bg-[#550000] hover:bg-[#660000] text-white text-sm font-bold py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 shadow-md shadow-[#550000]/20 whitespace-nowrap">
+                        <ShieldCheck className="w-4 h-4 text-[#ddc192]" /> Bayar Instan
                       </button>
                     )}
                   </div>
@@ -390,7 +390,7 @@ export default function WaliSantriPage() {
         {activeTab === 'topup' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
-              <h3 className="font-bold text-slate-800 mb-1 flex items-center gap-2"><HandCoins className="w-5 h-5 text-blue-500" /> Isi Saldo ZAD</h3>
+              <h3 className="font-bold text-slate-800 mb-1 flex items-center gap-2"><HandCoins className="w-5 h-5 text-[#550000]" /> Isi Saldo ZAD</h3>
               <p className="text-slate-400 text-sm mb-6">Top up saldo instan via Gopay, QRIS, atau Virtual Account. Tanpa konfirmasi admin, langsung masuk!</p>
               
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Pilih Nominal</p>
@@ -399,7 +399,7 @@ export default function WaliSantriPage() {
                   <button
                     key={amt}
                     onClick={() => setTopupAmount(amt)}
-                    className={`py-2.5 px-3 rounded-xl text-sm font-bold border-2 transition-all ${topupAmount === amt ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 text-slate-600 hover:border-slate-300'}`}
+                    className={`py-2.5 px-3 rounded-xl text-sm font-bold border-2 transition-all ${topupAmount === amt ? 'border-[#550000] bg-maroon-50 text-[#550000]' : 'border-slate-200 text-slate-600 hover:border-slate-300'}`}
                   >
                     Rp {(amt / 1000).toLocaleString('id-ID')}rb
                   </button>
@@ -413,15 +413,15 @@ export default function WaliSantriPage() {
                     type="number"
                     value={topupAmount}
                     onChange={e => setTopupAmount(Number(e.target.value))}
-                    className="w-full border border-slate-200 rounded-xl py-3 pl-12 pr-4 text-slate-800 font-bold focus:outline-none focus:border-blue-400 transition-colors"
+                    className="w-full border border-slate-200 rounded-xl py-3 pl-12 pr-4 text-slate-800 font-bold focus:outline-none focus:border-[#550000] transition-colors"
                   />
                 </div>
               </div>
               <button
                 onClick={openSnapForTopup}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
+                className="w-full bg-[#550000] hover:bg-[#660000] text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg shadow-[#550000]/20 flex items-center justify-center gap-2"
               >
-                <Smartphone className="w-5 h-5" /> Top Up Rp {topupAmount.toLocaleString('id-ID')}
+                <Smartphone className="w-5 h-5 text-[#ddc192]" /> Top Up Rp {topupAmount.toLocaleString('id-ID')}
               </button>
             </div>
 
@@ -441,12 +441,12 @@ export default function WaliSantriPage() {
                   ))}
                 </div>
               </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4">
-                <p className="text-blue-800 text-xs font-bold mb-2 flex items-center gap-1.5"><Star className="w-4 h-4" /> Keunggulan Bayar via SAFINA</p>
-                <ul className="text-blue-700 text-[11px] space-y-2">
-                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0" /> Langsung masuk ke saldo santri (bukan antri konfirmasi Admin)</li>
-                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0" /> 24 jam sehari, 7 hari seminggu — bisa top up kapan saja</li>
-                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0" /> Notifikasi WhatsApp otomatis setelah berhasil</li>
+              <div className="bg-maroon-50 border border-maroon-200 rounded-2xl p-4">
+                <p className="text-maroon-900 text-xs font-bold mb-2 flex items-center gap-1.5"><Star className="w-4 h-4 text-[#c9a84c]" /> Keunggulan Bayar via SAFINA</p>
+                <ul className="text-maroon-800 text-[11px] space-y-2">
+                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0 text-green-600" /> Langsung masuk ke saldo santri (bukan antri konfirmasi Admin)</li>
+                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0 text-green-600" /> 24 jam sehari, 7 hari seminggu — bisa top up kapan saja</li>
+                  <li className="flex items-start gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 mt-0.5 shrink-0 text-green-600" /> Notifikasi WhatsApp otomatis setelah berhasil</li>
                 </ul>
               </div>
             </div>
@@ -458,14 +458,14 @@ export default function WaliSantriPage() {
           <div className="space-y-6">
             {/* SAVING LOCK */}
             <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="bg-blue-600 p-6 flex items-center justify-between text-white">
+              <div className="bg-[#550000] p-6 flex items-center justify-between text-white">
                 <div>
-                  <h3 className="font-black text-lg flex items-center gap-2"><Lock className="w-5 h-5" /> Tabungan Terkunci (Saving Lock)</h3>
-                  <p className="text-blue-100 text-sm mt-1">Amankan sebagian saldo untuk berbagai tujuan (Kitab, Seragam, dll).</p>
+                  <h3 className="font-black text-lg flex items-center gap-2 text-white"><Lock className="w-5 h-5 text-[#ddc192]" /> Tabungan Terkunci (Saving Lock)</h3>
+                  <p className="text-[#ddc192] text-sm mt-1">Amankan sebagian saldo untuk berbagai tujuan (Kitab, Seragam, dll).</p>
                 </div>
                 <button 
                   onClick={addLock}
-                  className="px-4 py-2 bg-white text-blue-600 rounded-xl font-bold text-sm shadow-sm hover:bg-blue-50 transition-colors whitespace-nowrap"
+                  className="px-4 py-2 bg-white text-[#550000] rounded-xl font-bold text-sm shadow-sm hover:bg-slate-100 transition-colors whitespace-nowrap"
                 >
                   + Tambah Pos
                 </button>
@@ -474,7 +474,7 @@ export default function WaliSantriPage() {
               <div className="p-6">
                 <div className="space-y-4">
                   {savingLocks.map(lock => (
-                    <div key={lock.id} className={`p-4 border-2 rounded-2xl transition-all relative ${lock.active ? 'border-blue-200 bg-blue-50/50' : 'border-slate-100 bg-slate-50 opacity-60'}`}>
+                    <div key={lock.id} className={`p-4 border-2 rounded-2xl transition-all relative ${lock.active ? 'border-maroon-200 bg-maroon-50/50' : 'border-slate-100 bg-slate-50 opacity-60'}`}>
                       {savingLocks.length > 1 && (
                          <button onClick={() => removeLock(lock.id)} className="absolute -top-3 -right-3 w-7 h-7 bg-white border border-slate-200 text-red-500 rounded-full flex items-center justify-center hover:bg-red-50 hover:text-red-600 shadow-sm z-10">✕</button>
                       )}
@@ -486,7 +486,7 @@ export default function WaliSantriPage() {
                             value={lock.label}
                             disabled={!lock.active}
                             onChange={(e) => updateLock(lock.id, 'label', e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-800 font-bold focus:border-blue-400 focus:outline-none text-sm disabled:bg-slate-50"
+                            className="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-slate-800 font-bold focus:border-[#550000] focus:outline-none text-sm disabled:bg-slate-50"
                           />
                         </div>
                         <div className="flex-1">
@@ -498,7 +498,7 @@ export default function WaliSantriPage() {
                               value={lock.amount}
                               disabled={!lock.active}
                               onChange={(e) => updateLock(lock.id, 'amount', Number(e.target.value))}
-                              className="w-full bg-white border border-slate-200 rounded-lg py-2 pl-9 pr-3 text-slate-800 font-black focus:border-blue-400 focus:outline-none text-sm disabled:bg-slate-50"
+                              className="w-full bg-white border border-slate-200 rounded-lg py-2 pl-9 pr-3 text-slate-800 font-black focus:border-[#550000] focus:outline-none text-sm disabled:bg-slate-50"
                             />
                           </div>
                         </div>
@@ -506,7 +506,7 @@ export default function WaliSantriPage() {
                           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider md:hidden">Status Lock:</span>
                           <button 
                             onClick={() => toggleLock(lock.id)}
-                            className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${lock.active ? 'bg-blue-500' : 'bg-slate-300'}`}
+                            className={`w-12 h-6 rounded-full transition-colors relative shrink-0 ${lock.active ? 'bg-[#550000]' : 'bg-slate-300'}`}
                           >
                             <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${lock.active ? 'right-1' : 'left-1'}`} />
                           </button>
@@ -517,9 +517,9 @@ export default function WaliSantriPage() {
                 </div>
                 
                 {totalLocked > 0 && (
-                  <div className="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-4 flex gap-3">
-                    <ShieldCheck className="w-5 h-5 text-blue-500 shrink-0" />
-                    <p className="text-sm text-blue-800">
+                  <div className="mt-6 bg-maroon-50 border border-maroon-200 rounded-xl p-4 flex gap-3">
+                    <ShieldCheck className="w-5 h-5 text-[#550000] shrink-0" />
+                    <p className="text-sm text-maroon-900">
                       Total <strong>Rp {totalLocked.toLocaleString('id-ID')}</strong> berhasil diamankan ke dalam {savingLocks.filter(l=>l.active).length} pos tabungan. Sisa saldo untuk jajan di kantin adalah <strong>Rp {saldoBebas.toLocaleString('id-ID')}</strong>.
                     </p>
                   </div>

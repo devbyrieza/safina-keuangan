@@ -396,7 +396,7 @@ export default function KasirKantinPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
       {/* Background decorations - Glassmorphism & Depth */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px]" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#ddc192]/20 rounded-full blur-[100px]" />
         <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-maroon-600/10 rounded-full blur-[100px]" />
       </div>
 
@@ -412,7 +412,7 @@ export default function KasirKantinPage() {
             </button>
             <div className="w-px h-6 bg-slate-200" />
             <h1 className="text-slate-800 font-black text-xl tracking-wide">
-              KASIR <span className="text-blue-600">KANTIN</span>
+              KASIR <span className="text-[#550000]">KANTIN</span>
             </h1>
           </div>
           <div className="flex items-center gap-4">
@@ -457,7 +457,7 @@ export default function KasirKantinPage() {
                       value={manualInput}
                       onChange={(e) => setManualInput(e.target.value)}
                       placeholder="Atau Tap Kartu di Mesin EDC/RFID..."
-                      className="w-full bg-white border-2 border-slate-200 text-slate-800 rounded-xl py-3 px-4 focus:outline-none focus:border-blue-400 text-sm font-bold transition-colors"
+                      className="w-full bg-white border-2 border-slate-200 text-slate-800 rounded-xl py-3 px-4 focus:outline-none focus:border-[#550000] text-sm font-bold transition-colors"
                       autoFocus
                     />
                     <div className="absolute right-3 top-3 px-2 py-0.5 bg-slate-200 text-[10px] text-slate-600 rounded font-bold">
@@ -468,7 +468,7 @@ export default function KasirKantinPage() {
 
                 {loading && (
                   <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center text-slate-800 backdrop-blur-sm z-20">
-                    <Loader2 className="w-10 h-10 animate-spin text-blue-600 mb-4" />
+                    <Loader2 className="w-10 h-10 animate-spin text-[#550000] mb-4" />
                     <p className="font-bold animate-pulse text-slate-700">
                       Memeriksa Data Santri...
                     </p>
@@ -597,16 +597,16 @@ export default function KasirKantinPage() {
                   </div>
                 </div>
 
-                <p className="text-xs font-black text-blue-600 mb-6 uppercase tracking-widest bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full shadow-sm animate-pulse flex items-center gap-2">
+                <p className="text-xs font-black text-[#550000] mb-6 uppercase tracking-widest bg-maroon-50 border border-maroon-100 px-4 py-1.5 rounded-full shadow-sm animate-pulse flex items-center gap-2">
                   <RefreshCcw className="w-3 h-3" /> Klik kartu untuk membalik
                 </p>
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-maroon-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
                   <p className="text-sm text-slate-500 font-bold uppercase tracking-wider mb-2 relative z-10">
                     Sisa Saldo Saat Ini
                   </p>
-                  <p className="text-4xl font-black text-blue-600 relative z-10">
+                  <p className="text-4xl font-black text-[#550000] relative z-10">
                     Rp {Number(student.dompet.saldo).toLocaleString("id-ID")}
                   </p>
                 </div>

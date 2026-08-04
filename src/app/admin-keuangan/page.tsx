@@ -87,11 +87,11 @@ export default function AdminKeuanganDashboard() {
                   <ArrowLeft className="w-4 h-4" />
                 </button>
                 <div className="w-px h-4 bg-slate-200" />
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-sm">
-                  <Building2 className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#550000] to-[#751414] flex items-center justify-center shadow-sm">
+                  <Building2 className="w-5 h-5 text-[#ddc192]" />
                 </div>
                 <div>
-                  <h1 className="font-black text-slate-800 tracking-wide text-lg">SAFINA<span className="text-blue-600 font-medium">COMMAND</span></h1>
+                  <h1 className="font-black text-slate-800 tracking-wide text-lg">SAFINA<span className="text-[#b89758] font-bold">COMMAND</span></h1>
                 </div>
               </div>
             
@@ -103,7 +103,7 @@ export default function AdminKeuanganDashboard() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari Santri / Transaksi..." 
-                  className="bg-slate-50 border border-slate-200 rounded-full py-1.5 pl-9 pr-4 text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all w-64"
+                  className="bg-slate-50 border border-slate-200 rounded-full py-1.5 pl-9 pr-4 text-sm text-slate-800 focus:outline-none focus:border-[#550000] focus:ring-1 focus:ring-[#550000] transition-all w-64"
                 />
               </div>
               <button className="relative p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-500 hover:text-slate-800">
@@ -139,9 +139,9 @@ export default function AdminKeuanganDashboard() {
             <button 
               onClick={() => simulateAction('Generate Tagihan Massal')}
               disabled={simulating === 'Generate Tagihan Massal'}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-bold text-white transition-all shadow-md flex items-center gap-2"
+              className="px-4 py-2 bg-[#550000] hover:bg-[#660000] rounded-lg text-sm font-bold text-white transition-all shadow-md shadow-[#550000]/20 flex items-center gap-2"
             >
-              <Receipt className="w-4 h-4" /> Generate Tagihan SPP
+              <Receipt className="w-4 h-4 text-[#ddc192]" /> Generate Tagihan SPP
             </button>
           </div>
         </div>
@@ -150,9 +150,9 @@ export default function AdminKeuanganDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* CARD 1 */}
           <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
-            <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] group-hover:bg-blue-500/20 transition-all"></div>
+            <div className="absolute -right-6 -top-6 w-32 h-32 bg-maroon-600/10 rounded-full blur-[40px] group-hover:bg-maroon-600/20 transition-all"></div>
             <div className="flex justify-between items-start mb-6 relative z-10">
-              <div className="p-3 bg-blue-50 rounded-2xl text-blue-600 shadow-sm group-hover:scale-110 transition-transform"><Wallet className="w-6 h-6" /></div>
+              <div className="p-3 bg-maroon-50 rounded-2xl text-maroon-700 shadow-sm group-hover:scale-110 transition-transform"><Wallet className="w-6 h-6" /></div>
               <span className="flex items-center text-xs font-black text-green-700 bg-green-100 px-2.5 py-1.5 rounded-lg"><ArrowUpRight className="w-4 h-4 mr-1"/> +12%</span>
             </div>
             <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Total Dana ZAD Mengendap</p>
@@ -257,9 +257,9 @@ export default function AdminKeuanganDashboard() {
                     </div>
                     <div className="w-full flex justify-center gap-1.5 h-full items-end">
                       {/* Topup bar */}
-                      <div className="w-1/3 bg-blue-500/80 rounded-t-sm transition-all hover:bg-blue-400 cursor-pointer" style={{ height: `${topupH}%`, minHeight: d.topup > 0 ? '4px' : '0' }}></div>
+                      <div className="w-1/3 bg-[#c9a84c] rounded-t-sm transition-all hover:bg-[#ddc192] cursor-pointer" style={{ height: `${topupH}%`, minHeight: d.topup > 0 ? '4px' : '0' }}></div>
                       {/* Jajan bar */}
-                      <div className="w-1/3 bg-maroon-500/80 rounded-t-sm transition-all hover:bg-maroon-400 cursor-pointer" style={{ height: `${jajanH}%`, minHeight: d.jajan > 0 ? '4px' : '0' }}></div>
+                      <div className="w-1/3 bg-[#550000] rounded-t-sm transition-all hover:bg-[#800a0a] cursor-pointer" style={{ height: `${jajanH}%`, minHeight: d.jajan > 0 ? '4px' : '0' }}></div>
                     </div>
                     <span className="text-center text-[10px] text-slate-500 mt-2 block font-bold">{d.day}</span>
                   </div>
@@ -267,8 +267,8 @@ export default function AdminKeuanganDashboard() {
               }) || <div className="w-full text-center text-slate-400 text-sm py-20">Memuat Data Grafik...</div>}
             </div>
             <div className="flex justify-center gap-6 mt-6">
-              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-blue-500"></div> Top Up</div>
-              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-maroon-500"></div> Jajan (Kantin)</div>
+              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-[#c9a84c]"></div> Top Up</div>
+              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-[#550000]"></div> Jajan (Kantin)</div>
             </div>
           </div>
 
@@ -276,7 +276,7 @@ export default function AdminKeuanganDashboard() {
           <div className="xl:col-span-1 bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8 flex flex-col h-full">
             <div className="flex justify-between items-center mb-8">
               <h3 className="font-bold text-slate-800 flex items-center gap-3">
-                <History className="w-5 h-5 text-blue-600" /> Live Feed
+                <History className="w-5 h-5 text-[#550000]" /> Live Feed
               </h3>
               <span className="flex h-3 w-3 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -291,7 +291,7 @@ export default function AdminKeuanganDashboard() {
                 data?.feed?.map((tx: any) => (
                   <div key={tx.id} className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200">
                     <div className={`mt-1 w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${
-                      tx.jenis === 'TOPUP' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-maroon-50 text-maroon-600 border border-maroon-100'
+                      tx.jenis === 'TOPUP' ? 'bg-[#faf0d7] text-[#8c6d32] border border-[#ebdcc3]' : 'bg-maroon-50 text-[#550000] border border-maroon-100'
                     }`}>
                       {tx.jenis === 'TOPUP' ? <ArrowDownRight className="w-5 h-5" /> : <ArrowUpRight className="w-5 h-5" />}
                     </div>
@@ -299,7 +299,7 @@ export default function AdminKeuanganDashboard() {
                       <p className="text-sm text-slate-700 font-medium">
                         <span className="font-black">{tx.nama_santri}</span> {tx.jenis === 'TOPUP' ? 'melakukan Top Up saldo' : `berbelanja di Kantin`}
                       </p>
-                      <p className={`text-sm font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-blue-600' : 'text-maroon-600'}`}>
+                      <p className={`text-sm font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-[#8c6d32]' : 'text-[#550000]'}`}>
                         {tx.jenis === 'TOPUP' ? '+' : '-'} Rp {tx.nominal.toLocaleString('id-ID')}
                       </p>
                       <p className="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">{new Date(tx.waktu).toLocaleTimeString('id-ID')} • {tx.keterangan}</p>
