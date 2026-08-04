@@ -237,7 +237,7 @@ export default function WaliSantriPage() {
 
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl font-black shadow-lg">
-              {dompet.nama_santri.charAt(0)}
+              {(dompet?.nama_santri || "S").charAt(0)}
             </div>
             <div>
               <p className="text-white/70 text-xs font-black uppercase tracking-widest mb-1">Portal Wali Santri</p>
