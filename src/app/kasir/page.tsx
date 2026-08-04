@@ -145,9 +145,24 @@ export default function KasirKantinPage() {
 
   // Handler for Physical RFID / Barcode Scanner (acts like a keyboard input + Enter)
   const [manualInput, setManualInput] = useState("");
+
+  useEffect(() => {
+    try {
+      const draft = localStorage.getItem("safina_kasir_manual_input");
+      if (draft) {
+        setManualInput(draft);
+      }
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("safina_kasir_manual_input", manualInput);
+  }, [manualInput]);
+
   const handlePhysicalScannerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (manualInput.trim()) {
+      localStorage.removeItem("safina_kasir_manual_input");
       setScannedData(manualInput);
       setLoading(true);
       handleProcessScan(manualInput.trim());
@@ -378,32 +393,38 @@ export default function KasirKantinPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
+      {/* Background decorations - Glassmorphism & Depth */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-maroon-600/10 rounded-full blur-[100px]" />
+      </div>
+
       {/* Header Kasir */}
-      <div className="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+      <div className="bg-white/80 backdrop-blur-xl border-b border-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => router.push("/")}
-              className="text-slate-500 hover:text-slate-800 transition-colors"
+              className="w-10 h-10 rounded-2xl bg-slate-100 text-slate-500 hover:text-slate-800 hover:bg-slate-200 flex items-center justify-center transition-all"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <div className="w-px h-5 bg-slate-200" />
-            <h1 className="text-slate-800 font-black text-lg">
-              KASIR <span className="text-blue-600 font-medium">KANTIN</span>
+            <div className="w-px h-6 bg-slate-200" />
+            <h1 className="text-slate-800 font-black text-xl tracking-wide">
+              KASIR <span className="text-blue-600">KANTIN</span>
             </h1>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2 bg-green-500/20 border border-green-500/30 rounded-full px-3 py-1.5">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-green-400 text-xs font-bold">
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-2 shadow-sm">
+              <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
+              <span className="text-green-600 text-xs font-black uppercase tracking-widest">
                 KANTIN BUKA
               </span>
             </div>
             <button
               onClick={() => router.push("/")}
-              className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-full transition-colors"
+              className="w-10 h-10 rounded-2xl bg-slate-100 text-slate-500 hover:text-slate-800 hover:bg-slate-200 flex items-center justify-center transition-all"
             >
               <LogOut className="w-5 h-5" />
             </button>
@@ -415,18 +436,18 @@ export default function KasirKantinPage() {
         src="https://unpkg.com/html5-qrcode"
         onLoad={() => setScriptLoaded(true)}
       />
-      <div className="max-w-5xl mx-auto p-4 md:p-8">
+      <div className="max-w-6xl mx-auto p-4 md:p-8 relative z-10 w-full flex-1 flex flex-col">
         <div className="grid lg:grid-cols-2 gap-8 flex-1">
           {/* Kolom Kiri: Scanner */}
-          <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm flex flex-col relative">
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] rounded-[2.5rem] overflow-hidden flex flex-col relative transition-all group">
             {!student ? (
-              <div className="flex-1 relative aspect-[4/3] lg:aspect-auto flex flex-col items-center justify-center p-4 bg-slate-50">
+              <div className="flex-1 relative aspect-[4/3] lg:aspect-auto flex flex-col items-center justify-center p-8 bg-slate-50/50">
                 <div
                   id="reader"
-                  className="w-full max-w-sm overflow-hidden rounded-xl border border-slate-200 bg-white"
+                  className="w-full max-w-sm overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-inner"
                 ></div>
 
-                <div className="w-full max-w-sm mt-6">
+                <div className="w-full max-w-sm mt-8">
                   <form
                     onSubmit={handlePhysicalScannerSubmit}
                     className="relative"
@@ -610,9 +631,12 @@ export default function KasirKantinPage() {
           </div>
 
           {/* Kolom Kanan: Input Pembayaran */}
-          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200 flex flex-col">
-            <h2 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">
-              <CreditCard className="text-maroon-600" /> Form Pembayaran
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] rounded-[2.5rem] p-6 md:p-8 flex flex-col transition-all group">
+            <h2 className="text-xl font-black text-slate-800 mb-8 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-maroon-50 text-maroon-600 flex items-center justify-center shadow-sm">
+                <CreditCard className="w-5 h-5" />
+              </div> 
+              Form Pembayaran
             </h2>
 
             {!student ? (

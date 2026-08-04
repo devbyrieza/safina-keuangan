@@ -12,6 +12,20 @@ export default function AdminKeuanganDashboard() {
   const router = useRouter();
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    try {
+      const draft = localStorage.getItem("safina_admin_search_draft");
+      if (draft) {
+        setSearchQuery(draft);
+      }
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("safina_admin_search_draft", searchQuery);
+  }, [searchQuery]);
 
   useEffect(() => {
     fetch("/api/admin/dashboard")
@@ -86,6 +100,8 @@ export default function AdminKeuanganDashboard() {
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                 <input 
                   type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari Santri / Transaksi..." 
                   className="bg-slate-50 border border-slate-200 rounded-full py-1.5 pl-9 pr-4 text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all w-64"
                 />
@@ -131,55 +147,55 @@ export default function AdminKeuanganDashboard() {
         </div>
 
         {/* OVERVIEW CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* CARD 1 */}
-          <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 relative overflow-hidden group hover:border-blue-400 transition-colors">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-blue-50 rounded-full blur-2xl group-hover:bg-blue-100 transition-all"></div>
-            <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2 bg-blue-50 rounded-lg text-blue-600"><Wallet className="w-5 h-5" /></div>
-              <span className="flex items-center text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md"><ArrowUpRight className="w-3 h-3 mr-1"/> +12%</span>
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] group-hover:bg-blue-500/20 transition-all"></div>
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <div className="p-3 bg-blue-50 rounded-2xl text-blue-600 shadow-sm group-hover:scale-110 transition-transform"><Wallet className="w-6 h-6" /></div>
+              <span className="flex items-center text-xs font-black text-green-700 bg-green-100 px-2.5 py-1.5 rounded-lg"><ArrowUpRight className="w-4 h-4 mr-1"/> +12%</span>
             </div>
-            <p className="text-sm font-bold text-slate-500 mb-1 relative z-10">Total Dana ZAD Mengendap</p>
-            <h3 className="text-2xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.totalSaldo?.toLocaleString('id-ID') || 0}</h3>
+            <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Total Dana ZAD Mengendap</p>
+            <h3 className="text-3xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.totalSaldo?.toLocaleString('id-ID') || 0}</h3>
           </div>
 
           {/* CARD 2 */}
-          <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 relative overflow-hidden group hover:border-green-400 transition-colors">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-green-50 rounded-full blur-2xl group-hover:bg-green-100 transition-all"></div>
-            <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2 bg-green-50 rounded-lg text-green-600"><Zap className="w-5 h-5" /></div>
-              <span className="flex items-center text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md"><ArrowUpRight className="w-3 h-3 mr-1"/> +5%</span>
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute -right-6 -top-6 w-32 h-32 bg-green-500/10 rounded-full blur-[40px] group-hover:bg-green-500/20 transition-all"></div>
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <div className="p-3 bg-green-50 rounded-2xl text-green-600 shadow-sm group-hover:scale-110 transition-transform"><Zap className="w-6 h-6" /></div>
+              <span className="flex items-center text-xs font-black text-green-700 bg-green-100 px-2.5 py-1.5 rounded-lg"><ArrowUpRight className="w-4 h-4 mr-1"/> +5%</span>
             </div>
-            <p className="text-sm font-bold text-slate-500 mb-1 relative z-10">Top Up Masuk Hari Ini</p>
-            <h3 className="text-2xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.topupHariIni?.toLocaleString('id-ID') || 0}</h3>
+            <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Top Up Masuk Hari Ini</p>
+            <h3 className="text-3xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.topupHariIni?.toLocaleString('id-ID') || 0}</h3>
           </div>
 
           {/* CARD 3 */}
-          <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 relative overflow-hidden group hover:border-maroon-400 transition-colors">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-maroon-50 rounded-full blur-2xl group-hover:bg-maroon-100 transition-all"></div>
-            <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2 bg-maroon-50 rounded-lg text-maroon-600"><ArrowRightLeft className="w-5 h-5" /></div>
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute -right-6 -top-6 w-32 h-32 bg-maroon-600/10 rounded-full blur-[40px] group-hover:bg-maroon-600/20 transition-all"></div>
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <div className="p-3 bg-maroon-50 rounded-2xl text-maroon-700 shadow-sm group-hover:scale-110 transition-transform"><ArrowRightLeft className="w-6 h-6" /></div>
             </div>
-            <p className="text-sm font-bold text-slate-500 mb-1 relative z-10">Omzet Kantin Hari Ini</p>
-            <h3 className="text-2xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.omzetKantin?.toLocaleString('id-ID') || 0}</h3>
+            <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Omzet Kantin Hari Ini</p>
+            <h3 className="text-3xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.omzetKantin?.toLocaleString('id-ID') || 0}</h3>
           </div>
 
           {/* CARD 4 */}
-          <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 relative overflow-hidden group hover:border-purple-400 transition-colors">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-purple-50 rounded-full blur-2xl group-hover:bg-purple-100 transition-all"></div>
-            <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="p-2 bg-purple-50 rounded-lg text-purple-600"><Users className="w-5 h-5" /></div>
+          <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
+            <div className="absolute -right-6 -top-6 w-32 h-32 bg-purple-500/10 rounded-full blur-[40px] group-hover:bg-purple-500/20 transition-all"></div>
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <div className="p-3 bg-purple-50 rounded-2xl text-purple-600 shadow-sm group-hover:scale-110 transition-transform"><Users className="w-6 h-6" /></div>
             </div>
-            <p className="text-sm font-bold text-slate-500 mb-1 relative z-10">Total Tagihan Lunas (Bulan Ini)</p>
-            <h3 className="text-2xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.totalTagihanLunas?.toLocaleString('id-ID') || 0}</h3>
+            <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Total Tagihan Lunas (Bulan Ini)</p>
+            <h3 className="text-3xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.totalTagihanLunas?.toLocaleString('id-ID') || 0}</h3>
           </div>
         </div>
 
         {/* MAIN CONTENT GRID */}
-        <div className="grid grid-cols-1 xl:grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-1 sm:grid-cols-3 gap-8">
           
           {/* LEFT: CHART (SIMULATED) */}
-          <div className="xl:col-span-2 bg-white border border-slate-200 shadow-sm rounded-3xl p-6">
+          <div className="xl:col-span-2 bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8">
             <div className="flex justify-between items-center mb-8">
               <div>
                 <h3 className="font-bold text-slate-800">Arus Kas ZAD (7 Hari Terakhir)</h3>
@@ -257,43 +273,43 @@ export default function AdminKeuanganDashboard() {
           </div>
 
           {/* RIGHT: LIVE FEED */}
-          <div className="xl:col-span-1 bg-white border border-slate-200 shadow-sm rounded-3xl p-6 flex flex-col h-full">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 flex items-center gap-2">
-                <History className="w-4 h-4 text-blue-600" /> Live Feed
+          <div className="xl:col-span-1 bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8 flex flex-col h-full">
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="font-bold text-slate-800 flex items-center gap-3">
+                <History className="w-5 h-5 text-blue-600" /> Live Feed
               </h3>
-              <span className="flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              <span className="flex h-3 w-3 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
             </div>
             
             <div className="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
               {data?.feed?.length === 0 ? (
-                <p className="text-center text-slate-500 text-sm mt-10">Belum ada aktivitas hari ini.</p>
+                <p className="text-center text-slate-500 text-sm mt-10 font-medium">Belum ada aktivitas hari ini.</p>
               ) : (
                 data?.feed?.map((tx: any) => (
-                  <div key={tx.id} className="flex gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
-                    <div className={`mt-1 w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                      tx.jenis === 'TOPUP' ? 'bg-blue-50 text-blue-600' : 'bg-maroon-50 text-maroon-600'
+                  <div key={tx.id} className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200">
+                    <div className={`mt-1 w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${
+                      tx.jenis === 'TOPUP' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-maroon-50 text-maroon-600 border border-maroon-100'
                     }`}>
-                      {tx.jenis === 'TOPUP' ? <ArrowDownRight className="w-4 h-4" /> : <ArrowUpRight className="w-4 h-4" />}
+                      {tx.jenis === 'TOPUP' ? <ArrowDownRight className="w-5 h-5" /> : <ArrowUpRight className="w-5 h-5" />}
                     </div>
                     <div>
-                      <p className="text-sm text-slate-700">
-                        <span className="font-bold">{tx.nama_santri}</span> {tx.jenis === 'TOPUP' ? 'melakukan Top Up saldo' : `berbelanja di Kantin`}
+                      <p className="text-sm text-slate-700 font-medium">
+                        <span className="font-black">{tx.nama_santri}</span> {tx.jenis === 'TOPUP' ? 'melakukan Top Up saldo' : `berbelanja di Kantin`}
                       </p>
-                      <p className={`text-xs font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-blue-600' : 'text-maroon-600'}`}>
+                      <p className={`text-sm font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-blue-600' : 'text-maroon-600'}`}>
                         {tx.jenis === 'TOPUP' ? '+' : '-'} Rp {tx.nominal.toLocaleString('id-ID')}
                       </p>
-                      <p className="text-[10px] font-bold text-slate-400 mt-1">{new Date(tx.waktu).toLocaleTimeString('id-ID')} • {tx.keterangan}</p>
+                      <p className="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">{new Date(tx.waktu).toLocaleTimeString('id-ID')} • {tx.keterangan}</p>
                     </div>
                   </div>
                 ))
               )}
             </div>
             
-            <button className="w-full mt-4 py-2 border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors">
+            <button className="w-full mt-6 py-3 border border-slate-200 rounded-2xl text-xs font-black text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors uppercase tracking-widest">
               Lihat Semua Transaksi
             </button>
           </div>

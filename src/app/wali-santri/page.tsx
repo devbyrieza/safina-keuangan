@@ -47,6 +47,19 @@ export default function WaliSantriPage() {
   const [topupAmount, setTopupAmount] = useState(100000);
 
   useEffect(() => {
+    try {
+      const draft = localStorage.getItem("safina_wali_topup_amount");
+      if (draft) {
+        setTopupAmount(Number(draft));
+      }
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("safina_wali_topup_amount", topupAmount.toString());
+  }, [topupAmount]);
+
+  useEffect(() => {
     fetch('/api/wali-santri/dashboard')
       .then(res => res.json())
       .then(json => {
@@ -103,7 +116,8 @@ export default function WaliSantriPage() {
         setTagihanList(prev => prev.map(t => t.id === snapContext.item.id ? { ...t, status: 'lunas' } : t));
         showWANotif(`[SUKSES] *PEMBAYARAN BERHASIL*\nAlhamdulillah, pembayaran untuk *${snapContext.item.jenis}* senilai Rp ${snapContext.item.nominal.toLocaleString('id-ID')} telah berhasil diterima Yayasan. Jazakumullah khairan. (Sistem Keuangan)`);
       } else if (snapContext?.type === 'topup') {
-        setDompet(prev => ({ ...prev, saldo: prev.saldo + snapContext.item.nominal }));
+        localStorage.removeItem("safina_wali_topup_amount");
+        setDompet((prev: any) => ({ ...prev, saldo: prev.saldo + snapContext.item.nominal }));
         setTransaksiList((prev: any) => [{
           id: Date.now(),
           tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
@@ -132,6 +146,20 @@ export default function WaliSantriPage() {
 
   // === SAVING LOCK ===
   const [savingLocks, setSavingLocks] = useState([{ id: 1, amount: 200000, label: "Tabungan Beli Kitab", active: true }]);
+
+  useEffect(() => {
+    try {
+      const draft = localStorage.getItem("safina_wali_saving_locks");
+      if (draft) {
+        setSavingLocks(JSON.parse(draft));
+      }
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("safina_wali_saving_locks", JSON.stringify(savingLocks));
+  }, [savingLocks]);
+
   const totalLocked = savingLocks.filter(l => l.active).reduce((s, l) => s + l.amount, 0);
   const saldoBebas = Math.max(0, (dompet?.saldo || 0) - totalLocked);
 
@@ -187,63 +215,63 @@ export default function WaliSantriPage() {
     <div className="min-h-screen bg-slate-100">
       {/* HEADER */}
       <div className="bg-gradient-to-br from-maroon-800 via-maroon-700 to-maroon-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gold-400 rounded-full translate-y-1/2 -translate-x-1/2" />
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-400 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-8">
-          <div className="flex items-center justify-between mb-6">
-            <button onClick={() => router.push('/')} className="flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-12">
+          <div className="flex items-center justify-between mb-8">
+            <button onClick={() => router.push('/')} className="flex items-center gap-2 text-white/70 hover:text-white text-sm font-bold tracking-wide transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:bg-white/10">
               <ArrowLeft className="w-4 h-4" /> Beranda
             </button>
-            <div className="flex items-center gap-2">
-              <button className="relative p-2 rounded-full hover:bg-white/10 transition-colors">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-gold-400 rounded-full animate-pulse" />
+            <div className="flex items-center gap-3">
+              <button className="relative p-2.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-colors">
+                <Bell className="w-5 h-5 text-white/90" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-gold-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
               </button>
-              <button onClick={() => router.push('/')} className="p-2 rounded-full hover:bg-white/10 transition-colors">
-                <LogOut className="w-5 h-5" />
+              <button onClick={() => router.push('/')} className="p-2.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-colors">
+                <LogOut className="w-5 h-5 text-white/90" />
               </button>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-white/20 border-2 border-white/30 flex items-center justify-center text-2xl font-black">
+          <div className="flex items-center gap-5">
+            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl font-black shadow-lg">
               {dompet.nama_santri.charAt(0)}
             </div>
             <div>
-              <p className="text-white/70 text-xs font-medium uppercase tracking-wider">Wali Santri</p>
-              <h1 className="text-xl font-black text-white">{dompet.nama_santri}</h1>
-              <p className="text-white/60 text-xs">{dompet.no_kartu} · {dompet.kelas}</p>
+              <p className="text-white/70 text-xs font-black uppercase tracking-widest mb-1">Portal Wali Santri</p>
+              <h1 className="text-2xl font-black text-white tracking-wide">{dompet.nama_santri}</h1>
+              <p className="text-white/60 text-sm font-medium mt-1">{dompet.no_kartu} · <span className="text-gold-300">{dompet.kelas}</span></p>
             </div>
           </div>
 
           {/* Saldo Card */}
-          <div className="mt-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="mt-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2.5rem] p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
             <div>
-              <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Saldo ZAD (Uang Jajan)</p>
-              <h2 className="text-4xl font-black text-white tracking-tight">Rp {saldoBebas.toLocaleString('id-ID')}</h2>
-              <div className="flex items-center gap-2 mt-3">
-                <span className="px-2.5 py-1 bg-green-500/20 text-green-300 border border-green-500/30 rounded-lg text-xs font-bold flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" /> ZAD AKTIF
+              <p className="text-white/70 text-xs font-black uppercase tracking-widest mb-2">Total Saldo ZAD (Uang Jajan)</p>
+              <h2 className="text-5xl font-black text-white tracking-tight drop-shadow-md">Rp {saldoBebas.toLocaleString('id-ID')}</h2>
+              <div className="flex flex-wrap items-center gap-3 mt-4">
+                <span className="px-3 py-1.5 bg-green-500/20 text-green-300 border border-green-500/30 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                  <CheckCircle2 className="w-4 h-4" /> ZAD AKTIF
                 </span>
                 {totalLocked > 0 && (
-                  <span className="px-2.5 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <Lock className="w-3 h-3" /> Rp {totalLocked.toLocaleString('id-ID')} Terkunci
+                  <span className="px-3 py-1.5 bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                    <Lock className="w-4 h-4" /> Rp {totalLocked.toLocaleString('id-ID')} Terkunci
                   </span>
                 )}
                 {totalTagihanBelumLunas > 0 && (
-                  <span className="px-2.5 py-1 bg-red-500/20 text-red-300 border border-red-500/30 rounded-lg text-xs font-bold flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" /> Tunggakan: Rp {totalTagihanBelumLunas.toLocaleString('id-ID')}
+                  <span className="px-3 py-1.5 bg-red-500/20 text-red-300 border border-red-500/30 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                    <AlertCircle className="w-4 h-4" /> Tunggakan: Rp {totalTagihanBelumLunas.toLocaleString('id-ID')}
                   </span>
                 )}
               </div>
             </div>
             <button
               onClick={() => setActiveTab('topup')}
-              className="px-6 py-3 bg-gold-500 hover:bg-gold-400 text-slate-950 font-bold rounded-2xl text-sm transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center gap-2 whitespace-nowrap"
+              className="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-slate-900 font-black rounded-2xl text-base transition-all shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.6)] flex items-center gap-3 whitespace-nowrap hover:-translate-y-1"
             >
-              <HandCoins className="w-5 h-5" /> Isi Saldo Sekarang
+              <HandCoins className="w-6 h-6" /> Isi Saldo Sekarang
             </button>
           </div>
         </div>
