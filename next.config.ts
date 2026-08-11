@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig: import('next').NextConfig = {
+  output: 'standalone',
   /* config options here */
 };
 
