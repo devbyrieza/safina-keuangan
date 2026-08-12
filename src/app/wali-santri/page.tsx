@@ -577,7 +577,7 @@ export default function WaliSantriPage() {
 
       {/* MIDTRANS SNAP SIMULATION MODAL */}
       {snapModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4 overflow-y-auto">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4 overflow-y-auto overscroll-contain custom-scrollbar">
           <div className="bg-white w-full md:max-w-[400px] md:rounded-xl rounded-t-2xl overflow-hidden shadow-2xl font-sans flex flex-col" style={{ maxHeight: '90vh' }}>
             {/* Midtrans Header */}
             <div className="px-4 py-4 flex items-center justify-between border-b border-slate-200">
@@ -610,7 +610,7 @@ export default function WaliSantriPage() {
               </div>
             </div>
 
-            <div className="overflow-y-auto flex-1 p-5">
+            <div className="overflow-y-auto flex-1 p-5 overscroll-contain custom-scrollbar">
               {/* Step 1: Choose Method */}
               {snapStep === 'method' && (
                 <div>
