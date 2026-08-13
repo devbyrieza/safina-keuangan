@@ -269,7 +269,7 @@ export default function WaliSantriPage() {
             </div>
             <button
               onClick={() => setActiveTab('topup')}
-              className="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-slate-900 font-black rounded-2xl text-base transition-all shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_40px_rgba(212,175,55,0.6)] flex items-center gap-3 whitespace-nowrap hover:-translate-y-1"
+              className="px-8 py-4 bg-white hover:bg-slate-50 text-[#550000] font-black rounded-2xl text-base transition-all shadow-[0_10px_30px_rgba(255,255,255,0.2)] hover:shadow-[0_15px_40px_rgba(255,255,255,0.3)] flex items-center gap-3 whitespace-nowrap hover:-translate-y-1"
             >
               <HandCoins className="w-6 h-6" /> Isi Saldo Sekarang
             </button>
@@ -325,7 +325,7 @@ export default function WaliSantriPage() {
                 <p className="p-10 text-center text-slate-400 text-sm">Belum ada transaksi.</p>
               ) : transaksiList.map(tx => (
                 <div key={tx.id} className="px-6 py-4 hover:bg-slate-50 transition-colors flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tx.jenis === 'TOPUP' ? 'bg-green-100 text-green-600' : 'bg-maroon-100 text-maroon-600'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tx.jenis === 'TOPUP' ? 'bg-green-100 text-green-600' : 'bg-orange-100 text-orange-600'}`}>
                     {tx.jenis === 'TOPUP' ? <ArrowDownRight className="w-5 h-5" /> : <ArrowUpRight className="w-5 h-5" />}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -354,10 +354,10 @@ export default function WaliSantriPage() {
               <p className="text-amber-800 text-sm font-medium">Terdapat <strong>{tagihanList.filter(t => t.status === 'pending').length} tagihan belum lunas</strong> senilai total <strong>Rp {totalTagihanBelumLunas.toLocaleString('id-ID')}</strong>.</p>
             </div>
             {tagihanList.map(tagihan => (
-              <div key={tagihan.id} className={`bg-white rounded-3xl border overflow-hidden shadow-sm ${tagihan.status === 'lunas' ? 'border-slate-200 opacity-70' : 'border-maroon-200'}`}>
+              <div key={tagihan.id} className={`bg-white rounded-3xl border overflow-hidden shadow-sm ${tagihan.status === 'lunas' ? 'border-slate-200 opacity-70' : 'border-rose-200'}`}>
                 <div className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${tagihan.status === 'lunas' ? 'bg-green-100 text-green-600' : 'bg-maroon-100 text-maroon-600'}`}>
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${tagihan.status === 'lunas' ? 'bg-green-100 text-green-600' : 'bg-rose-100 text-rose-600'}`}>
                       {tagihan.status === 'lunas' ? <CheckCircle2 className="w-6 h-6" /> : <FileText className="w-6 h-6" />}
                     </div>
                     <div>
@@ -371,7 +371,7 @@ export default function WaliSantriPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <p className={`font-black text-xl ${tagihan.status === 'lunas' ? 'text-slate-400' : 'text-maroon-700'}`}>
+                    <p className={`font-black text-xl ${tagihan.status === 'lunas' ? 'text-slate-400' : 'text-rose-600'}`}>
                       Rp {tagihan.nominal.toLocaleString('id-ID')}
                     </p>
                     {tagihan.status === 'pending' && (
@@ -474,7 +474,7 @@ export default function WaliSantriPage() {
               <div className="p-6">
                 <div className="space-y-4">
                   {savingLocks.map(lock => (
-                    <div key={lock.id} className={`p-4 border-2 rounded-2xl transition-all relative ${lock.active ? 'border-maroon-200 bg-maroon-50/50' : 'border-slate-100 bg-slate-50 opacity-60'}`}>
+                    <div key={lock.id} className={`p-4 border-2 rounded-2xl transition-all relative ${lock.active ? 'border-blue-200 bg-blue-50/50' : 'border-slate-100 bg-slate-50 opacity-60'}`}>
                       {savingLocks.length > 1 && (
                          <button onClick={() => removeLock(lock.id)} className="absolute -top-3 -right-3 w-7 h-7 bg-white border border-slate-200 text-red-500 rounded-full flex items-center justify-center hover:bg-red-50 hover:text-red-600 shadow-sm z-10">✕</button>
                       )}
@@ -517,9 +517,9 @@ export default function WaliSantriPage() {
                 </div>
                 
                 {totalLocked > 0 && (
-                  <div className="mt-6 bg-maroon-50 border border-maroon-200 rounded-xl p-4 flex gap-3">
-                    <ShieldCheck className="w-5 h-5 text-[#550000] shrink-0" />
-                    <p className="text-sm text-maroon-900">
+                  <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 flex gap-3">
+                    <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0" />
+                    <p className="text-sm text-blue-900">
                       Total <strong>Rp {totalLocked.toLocaleString('id-ID')}</strong> berhasil diamankan ke dalam {savingLocks.filter(l=>l.active).length} pos tabungan. Sisa saldo untuk jajan di kantin adalah <strong>Rp {saldoBebas.toLocaleString('id-ID')}</strong>.
                     </p>
                   </div>
@@ -561,7 +561,7 @@ export default function WaliSantriPage() {
                       ) : (
                         <button 
                           onClick={() => claimReward(hafalan)}
-                          className="w-full py-2 bg-slate-900 hover:bg-gold-500 text-white hover:text-slate-900 transition-colors font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm"
+                          className="w-full py-2 border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm"
                         >
                           <Gift className="w-4 h-4" /> Setor Hafalan & Klaim Bonus
                         </button>

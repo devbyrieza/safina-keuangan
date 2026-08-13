@@ -192,7 +192,7 @@ export default function LoginPage() {
                 </div>
               </div>
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 bg-maroon-50 rounded-2xl flex items-center justify-center border border-maroon-100 group-hover:scale-110 transition-transform shrink-0"><Wallet className="w-6 h-6 text-[#550000]" /></div>
+                <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center border border-indigo-100 group-hover:scale-110 transition-transform shrink-0"><Wallet className="w-6 h-6 text-indigo-600" /></div>
                 <div>
                   <p className="text-slate-800 text-sm font-black leading-tight">Uang Mengendap di Rekening Yayasan</p>
                   <p className="text-slate-500 text-xs font-medium mt-1">Settlement otomatis ke BSI Yayasan setiap hari</p>

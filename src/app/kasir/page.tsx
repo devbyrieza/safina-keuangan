@@ -597,16 +597,16 @@ export default function KasirKantinPage() {
                   </div>
                 </div>
 
-                <p className="text-xs font-black text-[#550000] mb-6 uppercase tracking-widest bg-maroon-50 border border-maroon-100 px-4 py-1.5 rounded-full shadow-sm animate-pulse flex items-center gap-2">
+                <p className="text-xs font-black text-amber-700 mb-6 uppercase tracking-widest bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full shadow-sm animate-pulse flex items-center gap-2">
                   <RefreshCcw className="w-3 h-3" /> Klik kartu untuk membalik
                 </p>
 
                 <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-maroon-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-full blur-2xl -mr-10 -mt-10"></div>
                   <p className="text-sm text-slate-500 font-bold uppercase tracking-wider mb-2 relative z-10">
                     Sisa Saldo Saat Ini
                   </p>
-                  <p className="text-4xl font-black text-[#550000] relative z-10">
+                  <p className="text-4xl font-black text-emerald-600 relative z-10">
                     Rp {Number(student.dompet.saldo).toLocaleString("id-ID")}
                   </p>
                 </div>
@@ -633,7 +633,7 @@ export default function KasirKantinPage() {
           {/* Kolom Kanan: Input Pembayaran */}
           <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_20px_50px_rgba(0,0,0,0.06)] rounded-[2.5rem] p-6 md:p-8 flex flex-col transition-all group">
             <h2 className="text-xl font-black text-slate-800 mb-8 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-maroon-50 text-maroon-600 flex items-center justify-center shadow-sm">
+              <div className="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm">
                 <CreditCard className="w-5 h-5" />
               </div> 
               Form Pembayaran
@@ -661,7 +661,7 @@ export default function KasirKantinPage() {
                         onClick={() => setPosCategory(cat)}
                         className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
                           posCategory === cat
-                            ? "bg-maroon-600 text-white shadow-md"
+                            ? "bg-[#550000] text-white shadow-md"
                             : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                         }`}
                       >
@@ -674,15 +674,15 @@ export default function KasirKantinPage() {
                       <button
                         key={item.id}
                         onClick={() => addToCart(item)}
-                        className="p-2 bg-white border-2 border-slate-100 hover:border-maroon-300 hover:bg-maroon-50 rounded-xl text-left transition-all group active:scale-95"
+                        className="p-2 bg-white border-2 border-slate-100 hover:border-slate-300 hover:bg-slate-50 rounded-xl text-left transition-all group active:scale-95"
                       >
-                        <div className="text-maroon-700 mb-2 bg-maroon-50 w-10 h-10 rounded-lg flex items-center justify-center">
+                        <div className="text-slate-600 mb-2 bg-slate-100 w-10 h-10 rounded-lg flex items-center justify-center">
                           <item.icon className="w-5 h-5" />
                         </div>
                         <p className="font-bold text-slate-800 text-[11px] leading-tight">
                           {item.nama}
                         </p>
-                        <p className="text-maroon-600 font-black text-[11px]">
+                        <p className="text-emerald-600 font-black text-[11px]">
                           Rp {(item.harga / 1000).toLocaleString("id-ID")}k
                         </p>
                         <p className="text-[9px] text-slate-400">
@@ -740,7 +740,7 @@ export default function KasirKantinPage() {
                         <span className="text-sm font-black text-slate-800">
                           TOTAL
                         </span>
-                        <span className="text-sm font-black text-maroon-700">
+                        <span className="text-sm font-black text-emerald-600">
                           Rp {cartTotal.toLocaleString("id-ID")}
                         </span>
                       </div>
@@ -781,7 +781,7 @@ export default function KasirKantinPage() {
                       cartTotal > Number(student.dompet.saldo) ||
                       !!successMsg
                     }
-                    className="w-full bg-maroon-700 hover:bg-maroon-800 disabled:bg-slate-200 disabled:text-slate-400 text-white text-lg font-black py-4 rounded-2xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-3"
+                    className="w-full bg-[#550000] hover:bg-[#660000] disabled:bg-slate-200 disabled:text-slate-400 text-white text-lg font-black py-4 rounded-2xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-3"
                   >
                     {isProcessing ? (
                       <Loader2 className="w-6 h-6 animate-spin" />

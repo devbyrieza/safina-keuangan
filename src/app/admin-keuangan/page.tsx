@@ -152,7 +152,7 @@ export default function AdminKeuanganDashboard() {
           <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-maroon-600/10 rounded-full blur-[40px] group-hover:bg-maroon-600/20 transition-all"></div>
             <div className="flex justify-between items-start mb-6 relative z-10">
-              <div className="p-3 bg-maroon-50 rounded-2xl text-maroon-700 shadow-sm group-hover:scale-110 transition-transform"><Wallet className="w-6 h-6" /></div>
+              <div className="p-3 bg-slate-100 rounded-2xl text-slate-700 shadow-sm group-hover:scale-110 transition-transform"><Wallet className="w-6 h-6" /></div>
               <span className="flex items-center text-xs font-black text-green-700 bg-green-100 px-2.5 py-1.5 rounded-lg"><ArrowUpRight className="w-4 h-4 mr-1"/> +12%</span>
             </div>
             <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Total Dana ZAD Mengendap</p>
@@ -174,7 +174,7 @@ export default function AdminKeuanganDashboard() {
           <div className="bg-white/80 backdrop-blur-xl border border-white shadow-[0_15px_40px_rgba(0,0,0,0.06)] rounded-[2rem] p-6 relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300">
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-maroon-600/10 rounded-full blur-[40px] group-hover:bg-maroon-600/20 transition-all"></div>
             <div className="flex justify-between items-start mb-6 relative z-10">
-              <div className="p-3 bg-maroon-50 rounded-2xl text-maroon-700 shadow-sm group-hover:scale-110 transition-transform"><ArrowRightLeft className="w-6 h-6" /></div>
+              <div className="p-3 bg-amber-50 rounded-2xl text-amber-600 shadow-sm group-hover:scale-110 transition-transform"><ArrowRightLeft className="w-6 h-6" /></div>
             </div>
             <p className="text-sm font-black text-slate-500 uppercase tracking-widest mb-2 relative z-10">Omzet Kantin Hari Ini</p>
             <h3 className="text-3xl font-black text-slate-800 relative z-10 tracking-tight">Rp {data?.omzetKantin?.toLocaleString('id-ID') || 0}</h3>
@@ -259,7 +259,7 @@ export default function AdminKeuanganDashboard() {
                       {/* Topup bar */}
                       <div className="w-1/3 bg-[#c9a84c] rounded-t-sm transition-all hover:bg-[#ddc192] cursor-pointer" style={{ height: `${topupH}%`, minHeight: d.topup > 0 ? '4px' : '0' }}></div>
                       {/* Jajan bar */}
-                      <div className="w-1/3 bg-[#550000] rounded-t-sm transition-all hover:bg-[#800a0a] cursor-pointer" style={{ height: `${jajanH}%`, minHeight: d.jajan > 0 ? '4px' : '0' }}></div>
+                      <div className="w-1/3 bg-rose-500 rounded-t-sm transition-all hover:bg-rose-600 cursor-pointer" style={{ height: `${jajanH}%`, minHeight: d.jajan > 0 ? '4px' : '0' }}></div>
                     </div>
                     <span className="text-center text-[10px] text-slate-500 mt-2 block font-bold">{d.day}</span>
                   </div>
@@ -268,7 +268,7 @@ export default function AdminKeuanganDashboard() {
             </div>
             <div className="flex justify-center gap-6 mt-6">
               <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-[#c9a84c]"></div> Top Up</div>
-              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-[#550000]"></div> Jajan (Kantin)</div>
+              <div className="flex items-center gap-2 text-xs text-slate-400"><div className="w-3 h-3 rounded-full bg-rose-500"></div> Jajan (Kantin)</div>
             </div>
           </div>
 
@@ -276,7 +276,7 @@ export default function AdminKeuanganDashboard() {
           <div className="xl:col-span-1 bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8 flex flex-col h-full">
             <div className="flex justify-between items-center mb-8">
               <h3 className="font-bold text-slate-800 flex items-center gap-3">
-                <History className="w-5 h-5 text-[#550000]" /> Live Feed
+                <History className="w-5 h-5 text-slate-600" /> Live Feed
               </h3>
               <span className="flex h-3 w-3 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -291,7 +291,7 @@ export default function AdminKeuanganDashboard() {
                 data?.feed?.map((tx: any) => (
                   <div key={tx.id} className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200">
                     <div className={`mt-1 w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${
-                      tx.jenis === 'TOPUP' ? 'bg-[#faf0d7] text-[#8c6d32] border border-[#ebdcc3]' : 'bg-maroon-50 text-[#550000] border border-maroon-100'
+                      tx.jenis === 'TOPUP' ? 'bg-[#faf0d7] text-[#8c6d32] border border-[#ebdcc3]' : 'bg-rose-50 text-rose-600 border border-rose-100'
                     }`}>
                       {tx.jenis === 'TOPUP' ? <ArrowDownRight className="w-5 h-5" /> : <ArrowUpRight className="w-5 h-5" />}
                     </div>
@@ -299,7 +299,7 @@ export default function AdminKeuanganDashboard() {
                       <p className="text-sm text-slate-700 font-medium">
                         <span className="font-black">{tx.nama_santri}</span> {tx.jenis === 'TOPUP' ? 'melakukan Top Up saldo' : `berbelanja di Kantin`}
                       </p>
-                      <p className={`text-sm font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-[#8c6d32]' : 'text-[#550000]'}`}>
+                      <p className={`text-sm font-black mt-1 ${tx.jenis === 'TOPUP' ? 'text-[#8c6d32]' : 'text-rose-600'}`}>
                         {tx.jenis === 'TOPUP' ? '+' : '-'} Rp {tx.nominal.toLocaleString('id-ID')}
                       </p>
                       <p className="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">{new Date(tx.waktu).toLocaleTimeString('id-ID')} • {tx.keterangan}</p>
