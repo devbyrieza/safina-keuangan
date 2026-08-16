@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Script from "next/script";
+import SplashScreen from "@/components/ui/SplashScreen";
+
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -40,7 +42,8 @@ export default function RootLayout({
           strategy="beforeInteractive" 
         />
       </head>
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-plus-jakarta, 'Plus Jakarta Sans', system-ui, sans-serif)" }}>{children}</body>
+      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-plus-jakarta, 'Plus Jakarta Sans', system-ui, sans-serif)" }}>
+        <SplashScreen />{children}</body>
     </html>
   );
 }
