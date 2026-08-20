@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Building2, Lock, User, Eye, EyeOff, ShieldCheck, Wallet, MonitorSmartphone, Crown, Store, Users, Key, ArrowRight } from "lucide-react";
 
 const DEMO_ACCOUNTS = [
+  { role: "Mudir", username: "wahabrajasam", password: "2026#@", href: "/admin-keuangan", color: "from-[#550000] to-[#751414]", icon: <Crown className="w-6 h-6 text-[#ddc192]" /> },
   { role: "Admin Keuangan", username: "admin", password: "admin123", href: "/admin-keuangan", color: "from-[#550000] to-[#751414]", icon: <Crown className="w-6 h-6 text-[#ddc192]" /> },
   { role: "Kasir Kantin", username: "kasir", password: "kasir123", href: "/kasir", color: "from-[#380000] to-[#550000]", icon: <Store className="w-6 h-6 text-[#ddc192]" /> },
   { role: "Wali Santri", username: "wali", password: "wali123", href: "/wali-santri", color: "from-[#b89758] to-[#8c6d32]", icon: <Users className="w-6 h-6 text-white" /> },
@@ -41,12 +42,17 @@ export default function LoginPage() {
     setLoading(true);
 
     setTimeout(() => {
+      if ((username === "wahabrajasam" || username === "prof.wahabrajasam35@gmail.com" || username === "081326611671") && password === "2026#@") {
+        localStorage.removeItem("safina_login_draft");
+        router.push("/admin-keuangan");
+        return;
+      }
       const acc = DEMO_ACCOUNTS.find(a => a.username === username && a.password === password);
       if (acc) {
         localStorage.removeItem("safina_login_draft");
         router.push(acc.href);
       } else {
-        setError("Username atau password salah. Coba akun demo di bawah.");
+        setError("Username / Email / No. WA atau password salah.");
         setLoading(false);
       }
     }, 800);
@@ -88,14 +94,14 @@ export default function LoginPage() {
             </h2>
             <form onSubmit={handleLogin} className="space-y-6 relative z-10">
               <div>
-                <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3">Username</label>
+                <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3">Username / Email / No. WA</label>
                 <div className="relative">
                   <User className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                   <input
                     type="text"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
-                    placeholder="Masukkan username..."
+                    placeholder="Username / Email / No. WA..."
                     className="w-full bg-slate-50/50 border border-slate-200 rounded-2xl py-4 pl-12 pr-4 text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#550000] focus:ring-4 focus:ring-[#550000]/10 transition-all text-base"
                   />
                 </div>
