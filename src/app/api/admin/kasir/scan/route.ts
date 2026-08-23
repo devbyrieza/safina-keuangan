@@ -22,8 +22,7 @@ export async function POST(req: Request) {
         ]
       },
       include: {
-        DompetSantri: true,
-      }
+        DompetSantri: true }
     });
 
     if (!pendaftar) {
@@ -36,8 +35,7 @@ export async function POST(req: Request) {
         data: {
           pendaftar_id: pendaftar.id,
           qr_code_string: pendaftar.nomor_pendaftaran,
-          saldo: 0,
-        }
+          saldo: 0 }
       });
       pendaftar.DompetSantri = dompet;
     }
@@ -57,8 +55,7 @@ export async function POST(req: Request) {
         dompet: {
           id: pendaftar.DompetSantri.id,
           saldo: pendaftar.DompetSantri.saldo,
-          batas_jajan_harian: pendaftar.DompetSantri.batas_jajan_harian,
-        }
+          batas_jajan_harian: pendaftar.DompetSantri.batas_jajan_harian }
       }
     });
 

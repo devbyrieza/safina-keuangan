@@ -12,33 +12,27 @@ export async function POST(request: Request) {
     const payload = {
       transaction_details: {
         order_id: order_id,
-        gross_amount: gross_amount,
-      },
+        gross_amount: gross_amount },
       item_details: [
         {
           id: order_id,
           price: gross_amount,
           quantity: 1,
-          name: item_name,
-        },
+          name: item_name },
       ],
       customer_details: customer_details || {
         first_name: "Wali Santri",
         last_name: "Al-Imam",
         email: "demo@alimam.com",
-        phone: "08123456789",
-      },
-    };
+        phone: "08123456789" } };
 
     const response = await fetch("https://app.sandbox.midtrans.com/snap/v1/transactions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Basic ${authString}`,
-      },
-      body: JSON.stringify(payload),
-    });
+        Authorization: `Basic ${authString}` },
+      body: JSON.stringify(payload) });
 
     const data = await response.json();
 

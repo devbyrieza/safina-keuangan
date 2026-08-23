@@ -30,8 +30,7 @@ import {
   ShoppingCart,
   Cpu,
   Wifi,
-  User,
-} from "lucide-react";
+  User } from "lucide-react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 
@@ -115,8 +114,7 @@ export default function KasirKantinPage() {
       const res = await fetch("/api/admin/kasir/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ qr_code: code }),
-      });
+        body: JSON.stringify({ qr_code: code }) });
       const data = await res.json();
       if (data.success) {
         setStudent(data.data);
@@ -184,9 +182,7 @@ export default function KasirKantinPage() {
         body: JSON.stringify({
           dompet_id: student.dompet.id,
           nominal: nominal,
-          keterangan: keterangan || "Jajan Kantin",
-        }),
-      });
+          keterangan: keterangan || "Jajan Kantin" }) });
       const data = await res.json();
 
       if (data.success) {
@@ -223,96 +219,84 @@ export default function KasirKantinPage() {
       harga: 15000,
       kategori: "Makanan",
       icon: Package,
-      stok: 42,
-    },
+      stok: 42 },
     {
       id: 2,
       nama: "Mie Goreng",
       harga: 10000,
       kategori: "Makanan",
       icon: UtensilsCrossed,
-      stok: 28,
-    },
+      stok: 28 },
     {
       id: 3,
       nama: "Roti Bakery",
       harga: 5000,
       kategori: "Snack",
       icon: Cookie,
-      stok: 55,
-    },
+      stok: 55 },
     {
       id: 4,
       nama: "Chiki Snack",
       harga: 3000,
       kategori: "Snack",
       icon: ShoppingBag,
-      stok: 120,
-    },
+      stok: 120 },
     {
       id: 5,
       nama: "Susu Murni",
       harga: 4000,
       kategori: "Minuman",
       icon: CupSoda,
-      stok: 35,
-    },
+      stok: 35 },
     {
       id: 6,
       nama: "Air Mineral",
       harga: 2000,
       kategori: "Minuman",
       icon: Droplet,
-      stok: 100,
-    },
+      stok: 100 },
     {
       id: 7,
       nama: "Teh Botol",
       harga: 5000,
       kategori: "Minuman",
       icon: Coffee,
-      stok: 48,
-    },
+      stok: 48 },
     {
       id: 8,
       nama: "Es Krim",
       harga: 6000,
       kategori: "Snack",
       icon: ShoppingBag,
-      stok: 20,
-    },
+      stok: 20 },
     {
       id: 9,
       nama: "Sabun Mandi",
       harga: 8000,
       kategori: "Koperasi",
       icon: Bath,
-      stok: 60,
-    },
+      stok: 60 },
     {
       id: 10,
       nama: "Shampo Sachet",
       harga: 2000,
       kategori: "Koperasi",
       icon: Droplets,
-      stok: 200,
-    },
+      stok: 200 },
     {
       id: 11,
       nama: "Kitab Nahwu",
       harga: 25000,
       kategori: "Koperasi",
       icon: BookOpen,
-      stok: 15,
-    },
+      stok: 15 },
     {
       id: 12,
       nama: "Pena / Bolpen",
       harga: 3000,
       kategori: "Koperasi",
       icon: PenTool,
-      stok: 150,
-    },
+      stok: 150 },
   ];
 
   const [cart, setCart] = useState<
@@ -334,8 +318,7 @@ export default function KasirKantinPage() {
           nama: item.nama,
           harga: item.harga,
           qty: 1,
-          Icon: item.icon,
-        },
+          Icon: item.icon },
       ];
     });
   };
@@ -365,9 +348,7 @@ export default function KasirKantinPage() {
         body: JSON.stringify({
           dompet_id: student.dompet.id,
           nominal: cartTotal,
-          keterangan: cartLabel || "Jajan Kantin",
-        }),
-      });
+          keterangan: cartLabel || "Jajan Kantin" }) });
       const data = await res.json();
       if (data.success) {
         setSuccessMsg(
@@ -482,8 +463,7 @@ export default function KasirKantinPage() {
                   className="w-full max-w-[260px] aspect-[54/85.6] relative cursor-pointer mb-6 transition-transform duration-700 ease-in-out"
                   style={{
                     transformStyle: "preserve-3d",
-                    transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                  }}
+                    transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
                   onClick={() => setIsFlipped(!isFlipped)}
                 >
                   {/* FRONT OF CARD */}
@@ -491,8 +471,7 @@ export default function KasirKantinPage() {
                     className="absolute inset-0 w-full h-full rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#ddc192]/30"
                     style={{
                       backfaceVisibility: "hidden",
-                      backgroundColor: "#550000",
-                    }}
+                      backgroundColor: "#550000" }}
                   >
                     {/* Background pattern */}
                     <div
@@ -500,8 +479,7 @@ export default function KasirKantinPage() {
                       style={{
                         backgroundImage:
                           "radial-gradient(circle at 2px 2px, #ddc192 1px, transparent 0)",
-                        backgroundSize: "12px 12px",
-                      }}
+                        backgroundSize: "12px 12px" }}
                     ></div>
 
                     {/* Glowing Top */}

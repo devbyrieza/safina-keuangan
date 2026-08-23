@@ -13,8 +13,7 @@ export async function GET() {
       data: {
         saldo: 500000,
         is_limit_terbuka: false,
-        limit_terbuka_sampai: null,
-      }
+        limit_terbuka_sampai: null }
     });
 
     // 3. Buat satu transaksi awal (Top Up Perdana) agar tidak kosong sama sekali
@@ -30,8 +29,7 @@ export async function GET() {
           jenis_transaksi: "TOPUP",
           nominal: 500000,
           saldo_akhir: 500000,
-          keterangan: "Top Up Perdana (Bonus Sistem)",
-        }
+          keterangan: "Top Up Perdana (Bonus Sistem)" }
       });
     }
 

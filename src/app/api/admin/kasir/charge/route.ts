@@ -15,8 +15,7 @@ export async function POST(req: Request) {
     const result = await prisma.$transaction(async (tx) => {
       // Kunci baris dompet agar tidak bisa diakses transaksi lain bersamaan
       const dompet = await tx.dompetSantri.findUnique({
-        where: { id: dompet_id },
-      });
+        where: { id: dompet_id } });
 
       if (!dompet) {
         throw new Error("Dompet tidak ditemukan");
@@ -43,8 +42,7 @@ export async function POST(req: Request) {
           jenis_transaksi: 'JAJAN_KANTIN',
           created_at: {
             gte: startOfDay,
-            lte: endOfDay,
-          }
+            lte: endOfDay }
         },
         _sum: {
           nominal: true
