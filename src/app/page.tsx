@@ -1,4 +1,4 @@
-// src/app/page.tsx
+﻿// src/app/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -136,50 +136,100 @@ export default function LoginPage() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTAgNjBoNjBNNjAgMGwwIDYwIi8+PC9nPjwvc3ZnPg==')] opacity-70 pointer-events-none" />
 
       {/* Top Navigation Pills (OMI Standard) */}
-      <div className="w-full max-w-5xl flex items-center justify-between gap-3 mb-6 relative z-10">
+      <div className="w-full max-w-5xl lg:max-w-6xl flex items-center justify-between gap-3 mb-4 relative z-10">
         <a
           href="https://pesantren-alimam.com"
           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white/95 border border-slate-200/90 shadow-2xs text-xs font-extrabold uppercase tracking-wider text-slate-700 hover:text-[#550000] hover:border-[#550000]/40 transition-all hover:-translate-y-0.5"
         >
-          <span>← Beranda Utama Al-Imam</span>
+          <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+          <span>Beranda Utama Al-Imam</span>
         </a>
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/95 border border-slate-200/90 shadow-2xs text-xs font-bold text-slate-700">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>SAFINA &bull; Portal Keuangan &amp; Dompet Santri</span>
+          <span>SAFINA &bull; Keuangan &amp; Dompet Santri</span>
         </div>
       </div>
 
-      <div className="w-full max-w-5xl relative z-10 grid lg:grid-cols-12 gap-8 items-start">
+      {/* Two-Panel OMI Card (Desktop Split / Mobile Stacked) */}
+      <div className="w-full max-w-5xl lg:max-w-6xl rounded-3xl overflow-hidden shadow-2xl shadow-slate-950/10 border border-slate-200 bg-white grid grid-cols-1 lg:grid-cols-12 relative z-10">
         
-        {/* ─── LEFT COLUMN: TWO-SECTION OMI LOGIN CARD ─── */}
-        <div className="lg:col-span-7 rounded-3xl overflow-hidden shadow-xl shadow-slate-900/5 border border-slate-200 bg-white">
+        {/* Sisi Kiri: Panel Identitas & 2 Bento Unggulan (Desktop: 5 Columns) */}
+        <div className="lg:col-span-5 bg-gradient-to-br from-[#2D0000] via-[#400000] to-[#550000] p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden flex flex-col justify-between">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#ddc192]/10 rounded-full blur-3xl pointer-events-none" />
           
-          {/* Section 1: Dark Maroon Gradient Header */}
-          <div className="bg-gradient-to-br from-[#2D0000] via-[#400000] to-[#550000] p-7 sm:p-9 text-center text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-44 h-44 bg-[#ddc192]/15 rounded-full blur-2xl pointer-events-none" />
-            
-            <div className="relative z-10 space-y-3">
-              <div className="w-16 h-16 bg-white rounded-2xl p-2 mx-auto shadow-md border border-white/20 flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="Logo Al-Imam"
-                  className="w-12 h-12 object-contain"
-                />
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                  SAFINA AL-IMAM
-                </h1>
-                <p className="text-xs text-[#ddc192] font-semibold mt-0.5">
-                  Sistem Administrasi Finansial &amp; Dompet Santri
-                </p>
-              </div>
-              <p className="text-xs text-slate-200 font-medium max-w-md mx-auto leading-relaxed">
-                Pusat pengelolaan tagihan SPP, tabungan, uang jajan digital, dan kasir kantin Pesantren Al Imam Al Islami.
+          <div className="relative z-10 space-y-6">
+            <div className="inline-flex items-center gap-3 bg-white px-3.5 py-2 rounded-2xl shadow-sm">
+              <img
+                src="/logo.png"
+                alt="Logo Al-Imam"
+                className="w-7 h-7 object-contain"
+              />
+              <span className="text-xs font-extrabold text-slate-900 tracking-tight">
+                SAFINA AL-IMAM
+              </span>
+            </div>
+
+            <div>
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#ddc192] bg-white/10 px-3 py-1 rounded-full border border-white/15 inline-block mb-3">
+                Keuangan &amp; Dompet Digital
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
+                Portal Finansial &amp; SPP Santri
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-200/90 font-normal mt-2 leading-relaxed">
+                Pusat pengelolaan tagihan SPP, tabungan, uang jajan digital, dan kasir kantin terpadu Pesantren Al-Imam Al-Islami.
               </p>
+            </div>
+
+            {/* 2 Kartu Bento Fitur Unggulan */}
+            <div className="space-y-3 pt-2">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex items-center gap-3.5 shadow-sm">
+                <div className="w-11 h-11 rounded-xl bg-[#ddc192]/20 border border-[#ddc192]/30 flex items-center justify-center shrink-0 text-[#ddc192]">
+                  <Wallet className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-extrabold text-white">
+                    Payment Gateway Terpadu
+                  </h4>
+                  <p className="text-[11px] text-slate-300 font-normal">
+                    Virtual Account BSI &amp; QRIS otomatis
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex items-center gap-3.5 shadow-sm">
+                <div className="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 text-emerald-300">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-extrabold text-white">
+                    Laporan SPP &amp; Kasir Real-Time
+                  </h4>
+                  <p className="text-[11px] text-slate-300 font-normal">
+                    Transparansi mutasi kasir &amp; tabungan
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
+          <div className="relative z-10 pt-6 mt-6 border-t border-white/10 text-[11px] text-slate-300/80 font-medium flex items-center justify-between">
+            <span>Biro Keuangan &bull; SAFINA Al-Imam</span>
+            <span className="text-[#ddc192]">&bull; Terverifikasi BSI</span>
+          </div>
+        </div>
+
+        {/* Sisi Kanan: White Form Body (Desktop: 7 Columns) */}
+        <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 bg-white space-y-5 flex flex-col justify-center">
+          
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug">
+              Masuk Portal SAFINA
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 font-normal mt-1 leading-relaxed">
+              Silakan masukkan kredensial akun Bendahara, Kasir, atau Wali Santri.
+            </p>
+          </div>
           {/* Section 2: White Body Card */}
           <div className="p-7 sm:p-9 space-y-5 bg-white">
             
@@ -280,90 +330,29 @@ export default function LoginPage() {
             </div>
 
           </div>
-
-        </div>
-
-        {/* ─── RIGHT COLUMN: QUICK ROLE ACCESS + SECURITY BADGES ─── */}
-        <div className="lg:col-span-5 space-y-6">
-          
-          {/* Quick Demo Access Card */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-slate-900 flex items-center gap-2">
-                <MonitorSmartphone className="w-4 h-4 text-[#550000]" />
-                <span>Akses Cepat Demo / Presentasi</span>
-              </span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                Multi-Role
-              </span>
-            </div>
-
-            <div className="space-y-2.5">
+          {/* Quick Demo Access Buttons */}
+          <div className="pt-3 border-t border-slate-100">
+            <span className="text-[11px] font-extrabold text-slate-600 block mb-2">
+              Akses Cepat Demo / Presentasi:
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {DEMO_ACCOUNTS.map((acc) => (
                 <button
                   key={acc.role}
+                  type="button"
                   onClick={() => quickLogin(acc)}
                   disabled={loading}
-                  className="w-full p-3.5 rounded-2xl border border-slate-200 hover:border-[#550000] hover:bg-slate-50 transition-all flex items-center justify-between group text-left cursor-pointer"
+                  className="p-2.5 rounded-xl border border-slate-200 hover:border-[#550000] hover:bg-[#550000]/5 text-left transition-all group cursor-pointer"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center group-hover:scale-105 transition-transform">
-                      {acc.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-extrabold text-slate-900 group-hover:text-[#550000] transition-colors">
-                        {acc.role}
-                      </h4>
-                      <p className="text-[11px] font-mono text-slate-400">
-                        {acc.username}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
-                      {acc.badge}
-                    </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#550000] group-hover:translate-x-0.5 transition-transform" />
-                  </div>
+                  <p className="text-xs font-extrabold text-slate-800 group-hover:text-[#550000] transition-colors">{acc.role}</p>
+                  <p className="text-[10px] text-slate-400 font-mono">{acc.badge}</p>
                 </button>
               ))}
             </div>
           </div>
-
-          {/* Security & Finance Trust Badges */}
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-2xs space-y-4">
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block">
-              Jaminan Keamanan Finansial
-            </span>
-
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 text-xs text-slate-600">
-                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-100">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <h5 className="font-extrabold text-slate-900">Payment Gateway Midtrans</h5>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Tersertifikasi Bank Indonesia &amp; Otoritas Jasa Keuangan (OJK).</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 text-xs text-slate-600">
-                <div className="w-8 h-8 rounded-lg bg-[#550000]/10 text-[#550000] flex items-center justify-center shrink-0 mt-0.5 border border-[#550000]/20">
-                  <Building2 className="w-4 h-4" />
-                </div>
-                <div>
-                  <h5 className="font-extrabold text-slate-900">Rekening Resmi Pesantren</h5>
-                  <p className="text-[11px] text-slate-500 mt-0.5">Seluruh dana langsung masuk ke rekening BSI Yayasan tanpa perantara.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
-
       <p className="text-center text-xs text-slate-400 mt-8 font-medium">
         &copy; 2026 Pesantren Al-Imam Al-Islami &bull; SAFINA v1.0
       </p>
