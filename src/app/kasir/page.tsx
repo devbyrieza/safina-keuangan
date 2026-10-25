@@ -377,8 +377,8 @@ export default function KasirKantinPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
       {/* Background decorations - Glassmorphism & Depth */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#ddc192]/20 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-maroon-600/10 rounded-full blur-[100px]" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#ddc192]/20 rounded-full blur-[100px] max-w-full" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-maroon-600/10 rounded-full blur-[100px] max-w-full" />
       </div>
 
       {/* Header Kasir */}

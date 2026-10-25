@@ -216,8 +216,8 @@ export default function WaliSantriPage() {
       {/* HEADER */}
       <div className="bg-gradient-to-br from-maroon-800 via-maroon-700 to-maroon-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-400 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 max-w-full" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-400 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 max-w-full" />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-12">
           <div className="flex items-center justify-between mb-8">
