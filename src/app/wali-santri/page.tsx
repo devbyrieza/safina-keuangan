@@ -212,7 +212,7 @@ export default function WaliSantriPage() {
 
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-dvh bg-slate-100">
       {/* HEADER */}
       <div className="bg-gradient-to-br from-maroon-800 via-maroon-700 to-maroon-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">

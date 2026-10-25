@@ -374,7 +374,7 @@ export default function KasirKantinPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
+    <div className="min-h-dvh bg-slate-50 flex flex-col relative overflow-hidden">
       {/* Background decorations - Glassmorphism & Depth */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#ddc192]/20 rounded-full blur-[100px] max-w-full" />

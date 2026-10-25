@@ -61,7 +61,7 @@ export default function AdminKeuanganDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-600 font-sans selection:bg-blue-500/30">
+    <div className="min-h-dvh bg-slate-50 text-slate-600 font-sans selection:bg-blue-500/30">
       
       {/* PREMIUM TOAST NOTIFICATION */}
       {toastMsg && (
